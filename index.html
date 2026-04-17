@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mindset Innovador | Frases</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="about.html">Acerca del Autor</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header>
+            <h1>El Mindset Innovador</h1>
+            <p>Más de 100 frases para reflexionar sobre la innovación.</p>
+        </header>
+
+        <div id="capture-zone">
+            <div class="quote-grid" id="quote-display">
+                </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn" onclick="generateQuotes()">Nuevas Frases</button>
+            <button class="btn" onclick="exportImage()">Exportar PNG</button>
+        </div>
+
+        <div class="download-box">
+            <h3>Obtén el Ebook</h3>
+            <p style="margin-bottom: 20px; opacity: 0.7;">Regístrate para recibir el libro de Jesús A. Gaxiola.</p>
+            <form onsubmit="handleDownload(event)">
+                <input type="email" placeholder="Email" required><br>
+                <button type="submit" class="btn btn-dark">Descargar ahora</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
