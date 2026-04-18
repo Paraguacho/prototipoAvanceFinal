@@ -321,3 +321,182 @@ header p {
     .actions { flex-direction: column; align-items: stretch; }
     .btn { width: 100%; }
 }
+
+/* --- NUEVO HERO DE ALTA CONVERSIÓN --- */
+.hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.hero-text {
+    text-align: left;
+}
+
+.hero-text h1 {
+    font-size: 40px;
+    line-height: 1.1;
+    color: var(--primary);
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: var(--txt-muted);
+    margin-bottom: 24px;
+}
+
+.hero-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 380px;
+}
+
+.hero-form input {
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* El botón de llamada a la acción DEBE ser el elemento que más resalte */
+.btn-cta {
+    background: var(--secondary);
+    color: #fff;
+    border: none;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn-cta:hover {
+    background: #a38a5e;
+}
+
+/* --- MOCKUP VISUAL DEL LIBRO --- */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.book-mockup {
+    width: 220px;
+    height: 310px;
+    transform: rotateY(-20deg) rotateX(5deg);
+    transform-style: preserve-3d;
+    box-shadow: 15px 20px 30px rgba(0,0,0,0.15);
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 3px 12px 12px 3px;
+    border-left: 10px solid rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.main-mockup {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+}
+
+.authority-bar {
+    background: #ffffff;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.bar-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--txt-muted);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.logo-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    opacity: 0.6; /* Los logos deben ser sutiles, no competir con el Hero */
+    filter: grayscale(100%); /* Efecto profesional de prensa */
+}
+
+.logo-grid span {
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--primary);
+}
+
+.mockup-title { font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+.mockup-author { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+
+/* Responsive para celulares */
+@media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero-text { text-align: center; }
+    .hero-form { margin: 0 auto; }
+    .hero-visual { display: none; } /* Ocultamos el mockup en móvil para priorizar el texto y el formulario */
+}
+
+.authority-bar {
+    background: #ffffff;
+    padding: 40px 0;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.bar-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--txt-muted);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.logo-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.logo-grid img {
+    height: 35px; /* Altura fija para que todos se vean uniformes */
+    width: auto;
+    filter: grayscale(100%); /* Efecto blanco y negro para no saturar de color */
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.logo-grid img:hover {
+    filter: grayscale(0%); /* El color vuelve cuando el usuario pasa el mouse */
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .logo-grid { gap: 20px; }
+    .logo-grid img { height: 25px; }
+}

@@ -4,44 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Mindset Innovador | Frases</title>
-    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#2c3e50',   /* Azul pizarra oscuro */
+              secondary: '#b89f71', /* Tono dorado/arena */
+              muted: '#6b7280',     /* Gris para textos secundarios */
+              bgmain: '#f8f9fa'     /* Fondo general */
+            },
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
+
 <body>
 
-    <nav>
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="about.html">Acerca del Autor</a></li>
+    <nav class="sticky top-0 z-50 bg-primary shadow-md py-4">
+        <div class="max-w-4xl mx-auto px-6">
+            <ul class="flex gap-4 sm:gap-6 list-none m-0 p-0">
+                <li>
+                    <a href="index.html" class="text-white bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
+                        Inicio
+                    </a>
+                </li>
+                <li>
+                    <a href="about.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
+                        Acerca del Autor
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <main class="container">
-        <header>
-            <h1>El Mindset Innovador</h1>
-            <p>Más de 100 frases para reflexionar sobre la innovación.</p>
+    <main class="max-w-4xl mx-auto px-6 pt-12">
+        
+        <header class="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-10 items-center mb-16 text-center md:text-left">
+            
+            <div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight mb-4 tracking-tight">
+                    Despierta la innovación en tu equipo (y en ti mismo) hoy.
+                </h1>
+                <p class="text-lg text-muted mb-8">
+                    Descarga gratis <strong class="text-primary">'El Mindset Innovador'</strong>. Más de 100 destellos de genialidad para líderes y emprendedores que se niegan a ser del montón.
+                </p>
+                
+                <form class="flex flex-col gap-3 max-w-sm mx-auto md:mx-0" onsubmit="handleDownload(event)">
+                    <input type="email" placeholder="Tu mejor correo electrónico" required 
+                           class="p-4 border border-gray-300 rounded-md text-base focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors">
+                    <button type="submit" 
+                            class="bg-secondary hover:bg-[#a38a5e] text-white border-none p-4 text-base font-extrabold rounded-md cursor-pointer uppercase tracking-wide shadow-lg shadow-secondary/30 transition-all hover:-translate-y-1">
+                        Quiero mis 100 frases gratis
+                    </button>
+                </form>
+            </div>
+
+            <div class="hidden md:flex justify-center">
+                <img src="src/mockup.png" alt="Ebook El Mindset Innovador" 
+                     class="w-full max-w-[320px] h-auto drop-shadow-2xl">
+            </div>
+
         </header>
 
-        <div id="capture-zone">
-            <div class="quote-grid" id="quote-display">
-                </div>
+        <section class="bg-white py-10 border-b border-gray-200 text-center w-full mt-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="text-[11px] uppercase tracking-[1.5px] text-muted mb-6 font-bold">
+                Trayectoria avalada por instituciones como:
+            </p>
+            <div class="flex justify-center items-center flex-wrap gap-8 md:gap-12">
+                <img src="src/logo-itson.png" alt="ITSON" class="h-7 md:h-9 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                <img src="src/logo-startup-weekend.png" alt="Startup Weekend" class="h-7 md:h-9 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                <img src="src/logo-sahuarolabs.png" alt="SahuaroLabs" class="h-7 md:h-9 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                <img src="src/logo-yaquivalley.png" alt="Yaqui Valley" class="h-7 md:h-9 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+            </div>
         </div>
+        </section>
 
-        <div class="actions">
-            <button class="btn" onclick="generateQuotes()">Nuevas Frases</button>
-            <button class="btn" onclick="exportImage()">Exportar PNG</button>
-        </div>
+        <section class="max-w-4xl mx-auto px-6 py-16">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold text-primary mb-2">Mira un adelanto de lo que encontrarás:</h2>
+                <p class="text-muted">Genera 3 frases aleatorias del libro para encender tu creatividad.</p>
+            </div>
 
-        <div class="download-box">
-            <h3>Obtén el Ebook</h3>
-            <p style="margin-bottom: 20px; opacity: 0.7;">Regístrate para recibir el libro de Jesús A. Gaxiola.</p>
-            <form onsubmit="handleDownload(event)">
-                <input type="email" placeholder="Email" required><br>
-                <button type="submit" class="btn btn-dark">Descargar ahora</button>
-            </form>
-        </div>
+            <div id="capture-zone" class="bg-bgmain p-2 sm:p-4 rounded-xl">
+                <div class="flex flex-col gap-5" id="quote-display">
+                    </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+                <button onclick="generateQuotes()" class="px-6 py-3 border border-primary text-primary font-semibold text-sm uppercase tracking-wide rounded hover:bg-primary hover:text-white transition-colors">
+                    Nuevas Frases
+                </button>
+                <button onclick="exportImage()" class="px-6 py-3 border border-primary text-primary font-semibold text-sm uppercase tracking-wide rounded hover:bg-primary hover:text-white transition-colors">
+                    Exportar PNG
+                </button>
+            </div>
+        </section>
     </main>
 
     <script src="app.js"></script>
