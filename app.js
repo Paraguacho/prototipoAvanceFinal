@@ -24,9 +24,17 @@ function generateQuotes() {
     
     selected.forEach(q => {
         display.innerHTML += `
-            <div class="border border-gray-200 border-l-4 border-l-secondary p-6 sm:p-8 bg-white rounded-lg shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
-                <p class="text-lg sm:text-xl mb-4 font-normal text-gray-800 italic">"${q.text}"</p>
-                <p class="inline-block text-[11px] text-primary bg-gray-100 px-3 py-1 rounded-md uppercase font-semibold tracking-wide">${q.cat}</p>
+            <div class="relative overflow-hidden border border-gray-200 border-l-4 border-l-secondary p-6 sm:p-8 bg-white rounded-lg shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                
+                <span class="absolute top-[-20px] left-4 text-[140px] text-gray-100 font-serif leading-none select-none z-0 pointer-events-none">
+                    "
+                </span>
+
+                <div class="relative z-10">
+                    <p class="text-lg sm:text-xl mb-4 font-normal text-gray-800 italic">"${q.text}"</p>
+                    <p class="inline-block text-[11px] text-primary bg-gray-100 px-3 py-1 rounded-md uppercase font-semibold tracking-wide">${q.cat}</p>
+                </div>
+                
             </div>
         `;
     });
