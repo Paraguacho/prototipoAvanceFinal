@@ -1,83 +1,94 @@
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Mindset Innovador | Frases</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>El Mindset Innovador | Frases</title>
+        
+        <script src="https://cdn.tailwindcss.com"></script>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#2c3e50',   /* Azul pizarra oscuro */
-              secondary: '#b89f71', /* Tono dorado/arena */
-              muted: '#6b7280',     /* Gris para textos secundarios */
-              bgmain: '#f8f9fa'     /* Fondo general */
-            },
-            fontFamily: {
-              sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        <script>
+        tailwind.config = {
+            theme: {
+            extend: {
+                colors: {
+                primary: '#2c3e50',   /* Azul pizarra oscuro */
+                secondary: '#b89f71', /* Tono dorado/arena */
+                muted: '#6b7280',     /* Gris para textos secundarios */
+                bgmain: '#f8f9fa'     /* Fondo general */
+                },
+                fontFamily: {
+                sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                }
             }
-          }
+            }
         }
-      }
-    </script>
+        </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-</head>
-<body>
-
-    <nav>
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="about.html" class="active">Acerca del Autor</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="container">
-        <div class="about-grid">
-            
-            <aside class="about-side">
-                <div class="photo-container">
-                    <img src="src/jesus-gaxiola.jpg" alt="Jesús Antonio Gaxiola Meléndrez" class="author-photo">
-                </div>
-                <h2>Jesús Antonio Gaxiola Meléndrez</h2>
-                <p class="author-subtitle">Ingeniero Industrial, MBA e impulsor del YaquiValley</p>
-                
-                <div class="contact-links">
-                    <a href="https://www.jesusgaxiola.com" target="_blank">jesusgaxiola.com</a>
-                    <p>@jesusgaxiola</p>
-                </div>
-            </aside>
-
-            <div class="about-main">
-                <section class="bio-section">
-                    <h3>Yo soy...</h3>
-                    <p class="extracto">Mentor de startups, organizador de StartupWeekend, emprendedor, SocialMedia manager, maestro universitario y socio fundador de SahuroLabs.com y Yaquivalley.mx.</p>
-                    
-                    <h4>Trayectoria</h4>
-                    <p>Maestro universitario por 30 años en ITSON. Apoyo a profesores a innovar en el aula y a empresas con la creación de modelos de negocios, especialmente Startups. Me apasiona el Design Thinking y el desarrollo de ecosistemas de innovación regional.</p>
-                </section>
-
-                <section class="cv-section">
-                    <br>
-                    <h4>Educación y Experiencia</h4>
-                    <ul class="cv-list">
-                        <li><strong>Ingeniería Industrial y de Sistemas</strong> - ITSON</li>
-                        <li><strong>Maestría en Administración de Negocios</strong> - ITSON</li>
-                        <li><strong>Fundador</strong> de SahuaroLabs, Be-Social Media y Lideres Globales</li>
-                        <li><strong>Organizador</strong> de StartupWeekend Ciudad Obregón</li>
-                    </ul>
-                </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    </head>
+    <body>
+        <nav class="sticky top-0 z-50 bg-primary shadow-md py-4">
+            <div class="max-w-4xl mx-auto px-6">
+                <ul class="flex gap-4 sm:gap-6 list-none m-0 p-0">
+                    <li>
+                        <a href="index.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
+                            Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="text-white bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
+                            Acerca del Autor
+                        </a>
+                    </li>
+                </ul>
             </div>
-            
-        </div>
-    </main>
+        </nav>
 
-</body>
+        <main class="max-w-4xl mx-auto px-6 py-16">
+            
+            <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 items-start">
+                
+                <aside class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 border-t-4 border-t-primary text-center">
+                    <div class="relative inline-block mb-6">
+                        <img src="src/jesus-gaxiola.jpg" alt="Jesús Antonio Gaxiola Meléndrez" class="w-full max-w-[180px] h-auto rounded-xl border-4 border-white shadow-lg object-cover">
+                    </div>
+                    
+                    <h2 class="text-xl font-bold text-primary leading-tight mb-3">Jesús Antonio Gaxiola Meléndrez</h2>
+                    <p class="text-sm text-secondary font-bold mb-6">Ingeniero Industrial, MBA e impulsor del YaquiValley</p>
+                    
+                    <div class="pt-5 border-t border-gray-100 text-sm flex flex-col gap-2">
+                        <a href="https://www.jesusgaxiola.com" target="_blank" class="text-primary hover:text-secondary font-medium transition-colors">jesusgaxiola.com</a>
+                        <p class="text-muted">@jesusgaxiola</p>
+                    </div>
+                </aside>
+
+                <div class="text-gray-800">
+                    <section class="mb-10">
+                        <h3 class="text-2xl font-extrabold text-primary mb-6">Yo soy...</h3>
+                        <p class="text-lg font-medium text-primary border-l-4 border-secondary pl-5 mb-8 bg-gray-50 p-4 rounded-r-lg">
+                            Mentor de startups, organizador de StartupWeekend, emprendedor, SocialMedia manager, maestro universitario y socio fundador de SahuroLabs.com y Yaquivalley.mx.
+                        </p>
+                        
+                        <h4 class="text-lg font-bold text-primary mb-3">Trayectoria</h4>
+                        <p class="leading-relaxed mb-4">
+                            Maestro universitario por 30 años en ITSON. Apoyo a profesores a innovar en el aula y a empresas con la creación de modelos de negocios, especialmente Startups. Me apasiona el Design Thinking y el desarrollo de ecosistemas de innovación regional.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h4 class="text-lg font-bold text-primary mb-4">Educación y Experiencia</h4>
+                        <ul class="divide-y divide-gray-100">
+                            <li class="py-3 text-sm"><strong class="text-primary">Ingeniería Industrial y de Sistemas</strong> — ITSON</li>
+                            <li class="py-3 text-sm"><strong class="text-primary">Maestría en Administración de Negocios</strong> — ITSON</li>
+                            <li class="py-3 text-sm"><strong class="text-primary">Fundador</strong> — SahuaroLabs, Be-Social Media y Lideres Globales</li>
+                            <li class="py-3 text-sm"><strong class="text-primary">Organizador</strong> — StartupWeekend Ciudad Obregón</li>
+                        </ul>
+                    </section>
+                </div>
+                
+            </div>
+        </main>
+    </body>
 </html>
