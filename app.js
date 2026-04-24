@@ -2,14 +2,14 @@
 const bookQuotes = [
     { text: "La innovación la hacen las personas para las personas.", cat: "La Semilla" },
     { text: "No hay empresas innovadoras, sin personas innovadoras.", cat: "La Semilla" },
-    { text: "Una idea que no se prueba es solo un buen deseo que no se cumplirá.", cat: "Ideación" },
-    { text: "El fracaso es un maestro caro, pero sus lecciones duran toda la vida.", cat: "Aprendizaje" },
-    { text: "Validar una idea no es buscar que esté bien, es buscar en qué está mal.", cat: "Acción" },
-    { text: "Innovar es construir lo que no existe, con lo que ya tienes.", cat: "Lanzamiento" },
-    { text: "El cambio no se impone, se invita.", cat: "Impacto" },
+    { text: "Una idea que no se prueba es solo un buen deseo que no se cumplirá.", cat: "Ideación y Exploración" },
+    { text: "El fracaso es un maestro caro, pero sus lecciones duran toda la vida.", cat: "Aprendizaje y Evolución" },
+    { text: "Validar una idea no es buscar que esté bien, es buscar en qué está mal.", cat: "Desarrollo y Validación" },
+    { text: "Innovar es construir lo que no existe, con lo que ya tienes.", cat: "Implementación y Escalabilidad" },
+    { text: "El cambio no se impone, se invita.", cat: "Implementación y Escalabilidad" },
     { text: "La curiosidad es el primer acto de rebelión contra lo establecido.", cat: "La Semilla" },
-    { text: "Un prototipo es la forma más efectiva de conversar con la realidad.", cat: "Ideación" },
-    { text: "Innovar no es controlar la incertidumbre, es aprender a bailar con ella.", cat: "Acción" }
+    { text: "Un prototipo es la forma más efectiva de conversar con la realidad.", cat: "Ideación y Exploración" },
+    { text: "Innovar no es controlar la incertidumbre, es aprender a bailar con ella.", cat: "Desarrollo y Validación" }
 ];
 
 // GENERADOR DE FRASES
@@ -37,7 +37,7 @@ function generateQuotes() {
                 </div>
                 
                 <div class="relative z-10 text-left mt-auto">
-                    <p class="inline-block text-[11px] text-primary bg-gray-100 px-3 py-1 rounded-md uppercase font-bold tracking-wide">
+                    <p class="inline-block text-[11px] text-primary bg-gray-100 px-10 py-1 rounded-md uppercase font-bold tracking-wide">
                         ${q.cat}
                     </p>
                 </div>
@@ -61,7 +61,14 @@ function exportImage() {
 // SIMULACIÓN DE REGISTRO
 function handleDownload(e) {
     e.preventDefault();
-    alert("Registro exitoso. El ebook se enviará a su correo.");
+    
+    // Capturamos el nombre ingresado
+    const name = document.getElementById('userName').value;
+    
+    // Mostramos un mensaje personalizado
+    alert(`¡Hola ${name}! Registro exitoso. El ebook se enviará a tu correo.`);
+    
+    // Limpiamos el formulario
     e.target.reset();
 }
 
