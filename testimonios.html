@@ -77,41 +77,44 @@
         </nav>
 
         
-        <main class="max-w-5xl mx-auto px-6 py-16 flex-grow">
+        <main class="max-w-6xl mx-auto px-6 py-16 flex-grow">
             
-            <header class="text-center mb-16">
-                <h1 class="text-3xl md:text-5xl font-serif font-black text-primary mb-4 tracking-tight">Muro de Lectores</h1>
-                <p class="text-lg text-muted max-w-2xl mx-auto">Comparte tu experiencia con el libro y únete a la conversación sobre innovación en el YaquiValley.</p>
+            <header class="text-center mb-16 relative z-10">
+                <span class="inline-block text-secondary font-bold text-sm uppercase tracking-[3px] mb-4">Comunidad</span>
+                <h1 class="text-4xl md:text-6xl font-serif font-black text-primary mb-6 tracking-tight">Muro de Lectores</h1>
+                <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed">
+                    Comparte tu experiencia con el libro y únete a la conversación sobre innovación en el ecosistema.
+                </p>
             </header>
 
-            <section class="bg-white p-8 md:p-10 rounded-xl shadow-sm border border-gray-100 mb-16 max-w-3xl mx-auto">
-                <h3 class="text-xl font-bold text-primary mb-6 text-center md:text-left">Deja tu testimonio</h3>
-                <form id="comment-form" class="flex flex-col gap-5">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="flex flex-col gap-1.5">
-                            <label class="text-xs font-bold text-primary uppercase tracking-wider ml-1">Nombre</label>
-                            <input type="text" id="comment-name" placeholder="Ej. Sebastián Martínez" required 
-                                class="p-3 bg-gray-50 border border-gray-200 rounded-md text-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
+            <section class="bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 mb-20 max-w-3xl mx-auto relative z-10">
+                <h3 class="text-2xl font-serif font-bold text-primary mb-8 text-center">Deja tu testimonio</h3>
+                <form id="comment-form" class="flex flex-col gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-xs font-bold text-primary uppercase tracking-widest ml-2">Nombre Completo</label>
+                            <input type="text" id="comment-name" placeholder="Ej. Juan Perez" required 
+                                class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-base focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
                         </div>
-                        <div class="flex flex-col gap-1.5">
-                            <label class="text-xs font-bold text-primary uppercase tracking-wider ml-1">Tu Rol</label>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-xs font-bold text-primary uppercase tracking-widest ml-2">Tu Rol o Empresa</label>
                             <input type="text" id="comment-role" placeholder="Ej. Estudiante de Software" required 
-                                class="p-3 bg-gray-50 border border-gray-200 rounded-md text-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
+                                class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-base focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
                         </div>
                     </div>
-                    <div class="flex flex-col gap-1.5">
-                        <label class="text-xs font-bold text-primary uppercase tracking-wider ml-1">Tu Opinión</label>
-                        <textarea id="comment-text" rows="3" placeholder="¿Cómo te ayudó este libro?" required 
-                            class="p-3 bg-gray-50 border border-gray-200 rounded-md text-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none resize-none transition-all"></textarea>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-xs font-bold text-primary uppercase tracking-widest ml-2">Tu Opinión</label>
+                        <textarea id="comment-text" rows="4" placeholder="¿Qué impacto tuvo este libro en ti o en tu equipo?" required 
+                            class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-base focus:border-secondary focus:ring-1 focus:ring-secondary outline-none resize-none transition-all"></textarea>
                     </div>
                     
-                    <button type="submit" class="bg-primary text-white font-bold py-4 rounded-md uppercase tracking-widest text-sm hover:bg-slate-700 transition-all hover:shadow-lg">
+                    <button type="submit" class="mt-2 bg-primary text-white font-bold py-5 rounded-xl uppercase tracking-[0.2em] text-sm hover:bg-secondary hover:-translate-y-1 transition-all duration-300 shadow-lg">
                         Publicar mi Comentario
                     </button>
                 </form>
             </section>
 
-            <div id="comments-feed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="comments-feed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 mt-12 pb-12">
                 </div>
 
         </main>
@@ -121,22 +124,38 @@
                 const feed = document.getElementById('comments-feed');
                 const form = document.getElementById('comment-form');
 
-                // Simulación inicial de testimonios reales del PDF
+                // Simulación inicial de testimonios reales
                 let comments = [
-                    { name: "Carlos M.", role: "Fundador de Startup Tech", text: "El mindset innovador no es solo un libro, es una sacudida mental. Directo al grano y sin teoría aburrida." },
-                    { name: "Laura G.", role: "Profesora Universitaria", text: "Como docente de ITSON, siempre busco formas de enseñar a mis alumnos a pensar fuera de la caja. Estas frases son oro puro." },
-                    { name: "Roberto V.", role: "Director de Operaciones", text: "La innovación suele venderse como algo inalcanzable. Este ebook la desmitifica y te da herramientas para aplicarla hoy mismo." }
+                    { name: "Carlos M.", role: "Fundador de Startup Tech", text: "El mindset innovador no es solo un libro, es una sacudida mental. Directo al grano y sin teoría aburrida. Nos ayudó a destrabar el desarrollo de nuestro último prototipo." },
+                    { name: "Laura G.", role: "Profesora Universitaria", text: "Como docente, siempre busco formas de enseñar a mis alumnos a pensar fuera de la caja. Estas frases son oro puro para iniciar debates en clase." },
+                    { name: "Roberto V.", role: "Director de Operaciones", text: "La innovación suele venderse como algo inalcanzable. Este ebook la desmitifica y te da herramientas para aplicarla hoy mismo. Altamente recomendado para equipos directivos que están estancados en la rutina." },
+                    { name: "Ana S.", role: "Desarrolladora Frontend", text: "Me encantó el enfoque práctico. A veces como programadores nos cerramos al código, pero el pilar de 'La Semilla' me hizo replantear cómo veo los problemas de los usuarios." }
                 ];
 
                 function renderComments() {
                     feed.innerHTML = '';
                     comments.forEach(c => {
+                        // Obtenemos la primera letra del nombre para el Avatar
+                        const initial = c.name.charAt(0).toUpperCase();
+
                         feed.innerHTML += `
-                            <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm border-t-4 border-secondary flex flex-col justify-between hover:shadow-md transition-shadow">
-                                <p class="text-gray-700 italic mb-6 leading-relaxed">"${c.text}"</p>
-                                <div>
-                                    <p class="font-bold text-primary text-sm">${c.name}</p>
-                                    <p class="text-[10px] text-muted uppercase tracking-widest font-bold mt-1">${c.role}</p>
+                            <div class="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] relative flex flex-col h-full hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500 group">
+                                
+                                <div class="absolute -top-8 left-8 w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center font-serif font-black text-2xl border-4 border-bgmain shadow-md group-hover:scale-110 transition-transform z-20">
+                                    ${initial}
+                                </div>
+
+                                <span class="absolute top-4 right-6 text-[120px] text-gray-50 font-serif leading-none select-none pointer-events-none z-0 transition-colors group-hover:text-secondary/5">
+                                    "
+                                </span>
+
+                                <div class="relative z-10 pt-4 flex flex-col flex-grow">
+                                    <p class="text-gray-700 italic mb-8 leading-relaxed text-lg flex-grow">"${c.text}"</p>
+                                    
+                                    <div class="border-t border-gray-100 pt-5 mt-auto">
+                                        <p class="font-bold text-primary font-serif text-xl">${c.name}</p>
+                                        <p class="text-[10px] text-secondary uppercase tracking-[0.2em] font-bold mt-1">${c.role}</p>
+                                    </div>
                                 </div>
                             </div>
                         `;
@@ -151,11 +170,9 @@
                         text: document.getElementById('comment-text').value
                     };
                     
-                    // Agregamos el nuevo comentario al inicio de la lista
                     comments.unshift(newComment);
                     renderComments();
                     
-                    // Pequeña notificación visual
                     alert(`¡Gracias ${newComment.name}! Tu testimonio se ha publicado correctamente.`);
                     form.reset();
                 };

@@ -77,93 +77,156 @@
             </div>
         </nav>
 
-        <main class="max-w-4xl mx-auto px-6 py-16">
-            
-            <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 items-start">
-                
-                <aside class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 border-t-4 border-t-primary text-center">
-                    <div class="relative inline-block mb-6">
-                        <img src="src/jesus-gaxiola.jpg" alt="Jesús Antonio Gaxiola Meléndrez" class="w-full max-w-[180px] h-auto rounded-xl border-4 border-white shadow-lg object-cover">
-                    </div>
+        <main class="max-w-6xl mx-auto px-6 py-16 flex-grow">
+        
+        <section class="relative grid grid-cols-1 md:grid-cols-12 gap-12 items-center mb-32">
+            <span class="absolute -top-10 -left-10 text-[120px] md:text-[200px] font-serif font-black text-primary/[0.03] select-none pointer-events-none z-0">
+                PERFIL
+            </span>
+
+            <div class="md:col-span-5 relative z-10">
+                <div class="relative group">
+                    <div class="absolute -bottom-6 -right-6 w-full h-full border-2 border-secondary/30 rounded-2xl z-0 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
                     
-                    <h2 class="text-2xl font-serif font-black text-primary leading-tight mb-3">Jesús Antonio Gaxiola Meléndrez</h2>
-                    <p class="text-sm text-secondary font-bold mb-6">Ingeniero Industrial y de Sistemas, MBA e impulsor del YaquiValley</p>
+                    <img src="src/jesus-gaxiola.jpg" alt="Jesús Antonio Gaxiola" 
+                        class="w-full aspect-[4/5] object-cover rounded-2xl shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700">
                     
-                    <div class="pt-5 border-t border-gray-100 text-sm flex flex-col gap-2">
-                        <a href="https://www.jesusgaxiola.com" target="_blank" class="text-primary hover:text-secondary font-medium transition-colors">jesusgaxiola.com</a>
-                        <p class="text-muted">@jesusgaxiola</p>
+                    <div class="absolute -top-4 -left-4 bg-primary text-white p-4 rounded-lg shadow-xl z-20 hidden md:block">
+                        <p class="text-xs font-bold uppercase tracking-widest text-secondary">Fundador</p>
+                        <p class="text-sm font-serif italic">Yaqui Valley</p>
                     </div>
-                </aside>
-
-                <div class="text-gray-800">
-                    <section class="mb-10">
-                        <h3 class="text-4xl md:text-6xl font-serif font-black text-primary leading-tight mb-4 tracking-tight">Yo soy...</h3>
-                        <p class="text-lg font-medium text-primary border-l-4 border-secondary pl-5 mb-8 bg-gray-50 p-4 rounded-r-lg">
-                            Mentor de startups, organizador de StartupWeekend, emprendedor, SocialMedia manager, maestro universitario y socio fundador de SahuroLabs.com y Yaquivalley.mx.
-                        </p>
-                        
-                        <h4 class="text-lg font-bold text-primary mb-3">Trayectoria</h4>
-                        <p class="leading-relaxed mb-4">
-                            Maestro universitario por 30 años en ITSON. Apoyo a profesores a innovar en el aula y a empresas con la creación de modelos de negocios, especialmente Startups. Me apasiona el Design Thinking y el desarrollo de ecosistemas de innovación regional.
-                        </p>
-                    </section>
-
-                    <section>
-                        <h4 class="text-lg font-bold text-primary mb-4">Educación y Experiencia</h4>
-                        <ul class="divide-y divide-gray-100">
-                            <li class="py-3 text-sm"><strong class="text-primary">Ingeniería Industrial y de Sistemas</strong> — ITSON</li>
-                            <li class="py-3 text-sm"><strong class="text-primary">Maestría en Administración de Negocios</strong> — ITSON</li>
-                            <li class="py-3 text-sm"><strong class="text-primary">Fundador</strong> — SahuaroLabs, Be-Social Media y Lideres Globales</li>
-                            <li class="py-3 text-sm"><strong class="text-primary">Organizador</strong> — StartupWeekend Ciudad Obregón</li>
-                        </ul>
-                    </section>
                 </div>
-                
-            </div> <section class="mt-16 pt-12 border-t border-gray-200">
-                <div class="text-center md:text-left mb-8">
-                    <h3 class="text-2xl font-extrabold text-primary mb-2">Otras Publicaciones</h3>
-                    <p class="text-muted text-sm">Explora más obras del autor enfocadas en ecosistemas de negocio.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full">
-                        <div class="h-64 bg-gray-50 border border-gray-100 rounded-md mb-4 overflow-hidden flex items-center justify-center">
-                            <img src="src/10terminos.jpg" alt="Título del Libro 1" class="w-full h-full object-contain p-2">
-                        </div>
-                        <h4 class="font-bold text-primary text-sm mb-2">10 Términos para emprendedores</h4>
-                        <p class="text-xs text-muted mb-4 flex-grow leading-relaxed">Una guía práctica enfocada en el desarrollo de startups y la creación de modelos de negocio rentables.</p>
-                        <span class="text-[10px] font-bold text-secondary uppercase tracking-widest">Próximamente</span>
-                    </div>
-
-                    <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full">
-                        <div class="h-64 bg-gray-50 border border-gray-100 rounded-md mb-4 overflow-hidden flex items-center justify-center">
-                            <img src="src/experiencias-aprendizaje.jpg" alt="Título del Libro 2" class="w-full h-full object-contain p-2">
-                        </div>
-                        <h4 class="font-bold text-primary text-sm mb-2">Webinar de Experiencias de Aprendizaje</h4>
-                        <p class="text-xs text-muted mb-4 flex-grow leading-relaxed">Explorando el Design Thinking aplicado a la educación universitaria y los entornos corporativos.</p>
-                        <span class="text-[10px] font-bold text-secondary uppercase tracking-widest">Próximamente</span>
-                    </div>
-
-                    <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full">
-                        <div class="h-64 bg-gray-50 border border-gray-100 rounded-md mb-4 overflow-hidden flex items-center justify-center">
-                            <img src="src/estrategias-crisis.jpg" alt="Título del Libro 3" class="w-full h-full object-contain p-2">
-                        </div>
-                        <h4 class="font-bold text-primary text-sm mb-2">Webinar: Estrategia de negocio en la crisis</h4>
-                        <p class="text-xs text-muted mb-4 flex-grow leading-relaxed">Estrategias de Social Media para líderes que buscan posicionar su ecosistema de innovación.</p>
-                        <span class="text-[10px] font-bold text-secondary uppercase tracking-widest">Próximamente</span>
-                    </div>
-                </div>  
-            </section>
-
-            <div class="mt-16 pt-10 text-center">
-                <p class="text-primary font-bold mb-4">¿Aún no tienes el libro principal?</p>
-                <a href="index.html" class="inline-block bg-secondary hover:bg-[#a38a5e] text-white px-8 py-4 text-sm font-extrabold rounded-md uppercase tracking-wide shadow-lg transition-all hover:-translate-y-1">
-                    Descargar 'El Mindset Innovador' Gratis
-                </a>
             </div>
 
+            <div class="md:col-span-7 relative z-10">
+                <span class="inline-block text-secondary font-bold text-sm uppercase tracking-[3px] mb-4">Sobre el Autor</span>
+                <h1 class="text-4xl md:text-6xl font-serif font-black text-primary leading-tight mb-8">
+                    Jesús Antonio <br> <span class="text-secondary">Gaxiola</span> Meléndrez
+                </h1>
+                
+                <div class="space-y-6">
+                    <p class="text-2xl md:text-3xl font-serif italic text-primary leading-relaxed border-l-4 border-secondary pl-6 py-2 bg-secondary/5 rounded-r-xl">
+                        "Mentor de startups, organizador de StartupWeekend, y socio fundador de SahuroLabs.com y Yaquivalley.mx."
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Maestro universitario por 30 años en ITSON. Apoyo a profesores a innovar en el aula y a empresas con la creación de modelos de negocios, especialmente Startups. Me apasiona el Design Thinking y el desarrollo de ecosistemas de innovación regional.
+                    </p>
+                    
+                    <div class="flex gap-6 pt-4 text-lg">
+                        <a href="https://www.jesusgaxiola.com" target="_blank" class="flex items-center gap-2 text-primary font-bold hover:text-secondary transition-colors">
+                            <span class="w-8 h-[2px] bg-secondary"></span> jesusgaxiola.com
+                        </a>
+                        <p class="text-muted font-medium">@jesusgaxiola</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        </main>
+        <section class="mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif font-black text-primary">Educación y Experiencia</h2>
+                <div class="w-24 h-1.5 bg-secondary mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto relative">
+                <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-[2px] bg-gray-200"></div>
+
+                <div class="space-y-16">
+                    
+                    <div class="relative flex flex-col md:flex-row items-center group">
+                        <div class="hidden md:block w-1/2 pr-16 text-right">
+                            <span class="text-sm font-bold text-secondary uppercase tracking-[0.2em]">Postgrado</span>
+                        </div>
+                        <div class="absolute left-[-7px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-bgmain shadow-md group-hover:scale-150 transition-transform duration-300 z-10"></div>
+                        
+                        <div class="w-full md:w-1/2 pl-10 md:pl-16">
+                            <h4 class="font-serif font-bold text-2xl text-primary mb-2">Maestría en Administración de Negocios</h4>
+                            <p class="text-base text-muted font-medium">ITSON</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row-reverse items-center group">
+                        <div class="hidden md:block w-1/2 pl-16 text-left">
+                            <span class="text-sm font-bold text-secondary uppercase tracking-[0.2em]">Formación</span>
+                        </div>
+                        <div class="absolute left-[-7px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-bgmain shadow-md group-hover:scale-150 transition-transform duration-300 z-10"></div>
+                        
+                        <div class="w-full md:w-1/2 pr-0 md:pr-16 md:text-right pl-10 md:pl-0">
+                            <h4 class="font-serif font-bold text-2xl text-primary mb-2">Ingeniería Industrial y de Sistemas</h4>
+                            <p class="text-base text-muted font-medium">ITSON</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center group">
+                        <div class="hidden md:block w-1/2 pr-16 text-right">
+                            <span class="text-sm font-bold text-secondary uppercase tracking-[0.2em]">Fundaciones</span>
+                        </div>
+                        <div class="absolute left-[-7px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-bgmain shadow-md group-hover:scale-150 transition-transform duration-300 z-10"></div>
+                        
+                        <div class="w-full md:w-1/2 pl-10 md:pl-16">
+                            <h4 class="font-serif font-bold text-2xl text-primary mb-2">SahuaroLabs & Be-Social Media</h4>
+                            <p class="text-base text-muted font-medium">Socio Fundador</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-20 border-t border-gray-200">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h3 class="text-3xl font-serif font-black text-primary">Otras Publicaciones</h3>
+                    <p class="text-muted mt-2">Explora el ecosistema de conocimiento del autor.</p>
+                </div>
+                <a href="index.html" class="bg-secondary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest shadow-xl hover:-translate-y-1 transition-all">
+                    Descargar Ebook Principal
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+                <div class="group">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all duration-500 transform group-hover:-translate-y-4">
+                        <div class="h-72 bg-gray-50 flex items-center justify-center p-6 border-b border-gray-100">
+                            <img src="src/10terminos.jpg" alt="10 Términos" class="h-full w-auto object-contain shadow-lg rotate-2 group-hover:rotate-0 transition-transform">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-serif font-bold text-primary mb-2">10 Términos para emprendedores</h4>
+                            <p class="text-xs text-muted leading-relaxed mb-4">Guía práctica para el desarrollo de startups y modelos rentables.</p>
+                            <span class="text-[10px] font-bold text-secondary uppercase tracking-[2px]">Próximamente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all duration-500 transform group-hover:-translate-y-4">
+                        <div class="h-72 bg-gray-50 flex items-center justify-center p-6 border-b border-gray-100">
+                            <img src="src/experiencias-aprendizaje.jpg" alt="Webinar Aprendizaje" class="h-full w-auto object-contain shadow-lg -rotate-2 group-hover:rotate-0 transition-transform">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-serif font-bold text-primary mb-2">Webinar de Experiencias</h4>
+                            <p class="text-xs text-muted leading-relaxed mb-4">Design Thinking aplicado a la educación y entornos corporativos.</p>
+                            <span class="text-[10px] font-bold text-secondary uppercase tracking-[2px]">Próximamente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all duration-500 transform group-hover:-translate-y-4">
+                        <div class="h-72 bg-gray-50 flex items-center justify-center p-6 border-b border-gray-100">
+                            <img src="src/estrategias-crisis.jpg" alt="Estrategias Crisis" class="h-full w-auto object-contain shadow-lg rotate-1 group-hover:rotate-0 transition-transform">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-serif font-bold text-primary mb-2">Estrategia en la crisis</h4>
+                            <p class="text-xs text-muted leading-relaxed mb-4">Posicionamiento de ecosistemas de innovación en tiempos difíciles.</p>
+                            <span class="text-[10px] font-bold text-secondary uppercase tracking-[2px]">Próximamente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
 
 
