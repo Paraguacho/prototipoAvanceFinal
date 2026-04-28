@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamificación | El Mindset Innovador</title>
+    <title>Desafío Memorama | El Mindset Innovador</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -25,207 +25,203 @@
     <nav class="sticky top-0 z-50 bg-primary shadow-md py-4">
         <div class="max-w-4xl mx-auto px-6">
             <ul class="flex flex-wrap gap-4 sm:gap-6 list-none m-0 p-0">
-                <li>
-                    <a href="index.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                        Inicio
-                    </a>
-                </li>
-                <li>
-                    <a href="el-libro.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                        El libro
-                    </a>
-                </li>
-                <li>
-                    <a href="about.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                        Acerca del Autor
-                    </a>
-                </li>
-                <li>
-                    <a href="testimonios.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                        Testimonios
-                    </a>
-                </li>
-                <li>
-                    <a href="gamificacion.html" class="text-white bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                        Desafío
-                    </a>
-                </li>
+                <li><a href="index.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Inicio</a></li>
+                <li><a href="el-libro.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">El libro</a></li>
+                <li><a href="about.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Acerca del Autor</a></li>
+                <li><a href="testimonios.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Testimonios</a></li>
+                <li><a href="gamificacion.html" class="text-white bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Desafío</a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6 py-16 flex-grow">
-        <header class="text-center mb-12">
-            <h1 class="text-3xl font-extrabold text-primary mb-4">Descubre tu ADN Innovador</h1>
-            <p class="text-muted">Responde con honestidad y descubre en qué etapa de la innovación eres más fuerte.</p>
+    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl font-extrabold text-primary mb-2">Memorama de la Innovación</h1>
+            <p class="text-muted text-sm md:text-base">Encuentra los pares de los 5 pilares del libro. ¡Pon a prueba tu memoria!</p>
+            
+            <div class="mt-6 flex justify-center gap-6 text-sm font-bold text-primary">
+                <p>Movimientos: <span id="moves" class="text-secondary">0</span></p>
+                <p>Pares: <span id="matches" class="text-secondary">0 </span></p>
+            </div>
         </header>
 
-        <section id="quiz-container" class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
-            <div id="question-content">
-                <span id="question-counter" class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-2 block"></span>
-                <h3 id="question-text" class="text-xl font-bold text-primary mb-6"></h3>
-                
-                <div class="flex flex-col gap-3">
-                    <button id="btn-0" onclick="answerQuestion(0)" class="w-full text-left p-4 border border-gray-200 rounded-lg hover:border-secondary hover:bg-gray-50 transition-all text-sm leading-relaxed"></button>
-                    <button id="btn-1" onclick="answerQuestion(1)" class="w-full text-left p-4 border border-gray-200 rounded-lg hover:border-secondary hover:bg-gray-50 transition-all text-sm leading-relaxed"></button>
+        <section class="max-w-5xl mx-auto px-4">
+            <div id="game-board" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 </div>
-            </div>
 
-            <div id="result-content" class="hidden text-center">
+            <div id="win-message" class="hidden text-center bg-white p-10 rounded-xl shadow-sm border border-gray-100">
                 <div class="inline-block p-4 bg-secondary/10 rounded-full mb-4">
-                    <svg class="w-12 h-12 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                    <svg class="w-12 h-12 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <h2 class="text-2xl font-bold text-primary mb-2">Tienes ADN de: <span id="profile-name" class="text-secondary">Visionario de Semilla</span></h2>
-                <p id="profile-desc" class="text-muted text-sm mb-8 leading-relaxed">Tienes una curiosidad insaciable. Tu mayor fortaleza es detectar oportunidades donde otros ven problemas.</p>
+                <h2 class="text-3xl font-bold text-primary mb-2">¡Reto de Innovación Superado!</h2>
+                <p class="text-muted mb-8">Has conectado con éxito los pilares del libro con su esencia práctica.</p>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center border-t border-gray-100 pt-8">
-                    <a href="index.html" class="bg-secondary text-white px-6 py-3 rounded-md font-bold text-sm uppercase tracking-wide shadow-md">Descargar Ebook Completo</a>
-                    <button onclick="location.reload()" class="border border-gray-300 px-6 py-3 rounded-md text-sm font-bold">Reiniciar Test</button>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html" class="bg-secondary hover:bg-[#a38a5e] text-white px-8 py-4 rounded-md font-bold text-sm uppercase tracking-wide shadow-md transition-colors">Descargar el Libro</a>
+                    <button onclick="initGame()" class="border border-gray-300 hover:bg-gray-50 px-8 py-4 rounded-md text-sm font-bold transition-colors">Jugar de nuevo</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-primary text-white/70 py-12 border-t-4 border-secondary mt-12">
-            <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-3">El Mindset Innovador</h3>
-                    <p class="text-sm leading-relaxed">
-                        Desmitificando la innovación para líderes, docentes y emprendedores que se atreven a pensar diferente.
-                    </p>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Navegación</h4>
-                    <ul class="flex flex-col gap-2 text-sm">
-                        <li><a href="index.html" class="hover:text-secondary transition-colors">Inicio (Descargar Libro)</a></li>
-                        <li><a href="el-libro.html" class="hover:text-secondary transition-colors">El Libro</a></li>
-                        <li><a href="about.html" class="hover:text-secondary transition-colors">Acerca del Autor</a></li>
-                        <li><a href="testimonios.html" class="hover:text-secondary transition-colors">Testimonios</a></li>
-                        <li><a href="gamificacion.html" class="hover:text-secondary transition-colors font-bold text-secondary">Desafío ADN Innovador</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Conecta con Jesús</h4>
-                    <ul class="flex flex-col gap-2 text-sm mb-6">
-                        <li><a href="https://jesusgaxiola.com" target="_blank" class="hover:text-secondary transition-colors">jesusgaxiola.com</a></li>
-                        <li><a href="https://x.com/jesusgaxiola" target="_blank" class="hover:text-secondary transition-colors">X (Twitter) @jesusgaxiola</a></li>
-                        <li><a href="https://linkedin.com/in/jesusgaxiola/" target="_blank" class="hover:text-secondary transition-colors">LinkedIn /jesusgaxiola</a></li>
-                    </ul>
-
-                    <a href="#" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-lg font-bold text-sm shadow-md hover:bg-[#ffea4d] hover:-translate-y-1 transition-all w-fit">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4v-2z"/>
-                        </svg>
-                        Invítame un café
-                    </a>
-                </div>
-
-                
-                
+    <footer class="bg-primary text-white/70 py-12 border-t-4 border-secondary mt-auto">
+        <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h3 class="text-xl font-bold text-white mb-3">El Mindset Innovador</h3>
+                <p class="text-sm leading-relaxed">Desmitificando la innovación para líderes, docentes y emprendedores que se atreven a pensar diferente.</p>
             </div>
-
-            <div class="max-w-4xl mx-auto px-6 mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/50">
-                <p>&copy; 2026 Jesús A. Gaxiola. Todos los derechos reservados. Impulsando el ecosistema YaquiValley.</p>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Navegación</h4>
+                <ul class="flex flex-col gap-2 text-sm">
+                    <li><a href="index.html" class="hover:text-secondary transition-colors">Inicio (Descargar Libro)</a></li>
+                    <li><a href="el-libro.html" class="hover:text-secondary transition-colors">El Libro</a></li>
+                    <li><a href="about.html" class="hover:text-secondary transition-colors">Acerca del Autor</a></li>
+                    <li><a href="testimonios.html" class="hover:text-secondary transition-colors">Testimonios</a></li>
+                    <li><a href="gamificacion.html" class="hover:text-secondary transition-colors font-bold text-secondary">Desafío ADN Innovador</a></li>
+                </ul>
             </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Conecta con Jesús</h4>
+                <ul class="flex flex-col gap-2 text-sm mb-6">
+                    <li><a href="https://jesusgaxiola.com" target="_blank" class="hover:text-secondary transition-colors">jesusgaxiola.com</a></li>
+                    <li><a href="https://x.com/jesusgaxiola" target="_blank" class="hover:text-secondary transition-colors">X (Twitter) @jesusgaxiola</a></li>
+                    <li><a href="https://linkedin.com/in/jesusgaxiola/" target="_blank" class="hover:text-secondary transition-colors">LinkedIn /jesusgaxiola</a></li>
+                </ul>
+                <a href="#" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-lg font-bold text-sm shadow-md hover:bg-[#ffea4d] hover:-translate-y-1 transition-all w-fit">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4v-2z"/></svg>
+                    Invítame un café
+                </a>
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto px-6 mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/50">
+            <p>&copy; 2026 Jesús A. Gaxiola. Todos los derechos reservados. Impulsando el ecosistema YaquiValley.</p>
+        </div>
     </footer>
 
     <script>
-        let currentStep = 0;
-        
-        // El sistema llevará la cuenta de los 5 pilares
-        let scores = {
-            "La Semilla": 0,
-            "Ideación y Exploración": 0,
-            "Desarrollo y Validación": 0,
-            "Implementación y Escalabilidad": 0,
-            "Aprendizaje y Evolución": 0
-        };
-
-        // 5 Preguntas estratégicas donde cada opción suma a un pilar distinto
-        const questions = [
-            {
-                text: "Cuando inicias un proyecto nuevo, ¿qué es lo primero que haces?",
-                options: [
-                    { text: "A) Observar mi entorno para encontrar problemas ocultos que nadie ve.", pillar: "La Semilla" },
-                    { text: "B) Juntar a mi equipo para hacer una lluvia de ideas sin límites.", pillar: "Ideación y Exploración" }
-                ]
-            },
-            {
-                text: "Tienes una idea que parece genial, ¿cuál es tu siguiente paso?",
-                options: [
-                    { text: "A) Armar un prototipo rápido y probarlo con usuarios reales.", pillar: "Desarrollo y Validación" },
-                    { text: "B) Pensar en la estrategia para que llegue a miles de personas.", pillar: "Implementación y Escalabilidad" }
-                ]
-            },
-            {
-                text: "Un proyecto acaba de fracasar inesperadamente. Tú sientes que:",
-                options: [
-                    { text: "A) Es una lección valiosa y documentas qué mejorar para la próxima.", pillar: "Aprendizaje y Evolución" },
-                    { text: "B) Es momento de volver al inicio y cuestionar si era el problema correcto.", pillar: "La Semilla" }
-                ]
-            },
-            {
-                text: "En una reunión de equipo que está estancada, tu rol suele ser:",
-                options: [
-                    { text: "A) Proponer soluciones disruptivas y locas para salir de la caja.", pillar: "Ideación y Exploración" },
-                    { text: "B) Exigir que salgamos a la calle a validar con datos antes de seguir hablando.", pillar: "Desarrollo y Validación" }
-                ]
-            },
-            {
-                text: "El producto ya se lanzó y es un éxito. ¿Qué te emociona más hacer ahora?",
-                options: [
-                    { text: "A) Buscar alianzas estratégicas para escalar el impacto masivamente.", pillar: "Implementación y Escalabilidad" },
-                    { text: "B) Recopilar todo el feedback posible para diseñar la versión 2.0.", pillar: "Aprendizaje y Evolución" }
-                ]
-            }
+        const pairsData = [
+            { id: 1, quote: "La innovación la hacen las personas para las personas.", category: "La Semilla", color: "#4a7c59" },
+            { id: 2, quote: "Una idea que no se prueba es solo un buen deseo.", category: "Ideación y Exploración", color: "#d4a017" },
+            { id: 3, quote: "Validar una idea es buscar en qué está mal.", category: "Desarrollo y Validación", color: "#113cd6" },
+            { id: 4, quote: "Innovar es construir lo que no existe, con lo que ya tienes.", category: "Implementación y Escalabilidad", color: "#ff8833" },
+            { id: 5, quote: "El fracaso es un maestro caro, pero sus lecciones duran.", category: "Aprendizaje y Evolución", color: "#8e44ad" }
         ];
 
-        // Base de datos de resultados
-        const profiles = {
-            "La Semilla": "Tu mayor fortaleza es la curiosidad. Eres excelente para detectar oportunidades donde otros ven problemas. ¡Tienes el don de cuestionar el status quo y preparar la tierra para innovar!",
-            "Ideación y Exploración": "Eres un creativo nato. No le temes al caos del proceso creativo y siempre estás empujando los límites de lo posible con ideas que desafían lo obvio.",
-            "Desarrollo y Validación": "Eres un ejecutor pragmático. Prefieres la acción inmediata, la validación técnica y hacer que las cosas funcionen en el mundo real en lugar de solo pensarlas.",
-            "Implementación y Escalabilidad": "Eres un estratega de impacto. Tu visión va más allá del producto inicial; buscas cómo trascender lo individual para generar un impacto colectivo y masivo.",
-            "Aprendizaje y Evolución": "Entiendes perfectamente que el fracaso es solo datos y que cada cierre es la semilla de un nuevo comienzo. Tu enfoque es la mejora continua."
-        };
+        let cards = [];
+        let flippedCards = [];
+        let matchedCount = 0;
+        let movesCount = 0;
+        let lockBoard = false;
 
-        function loadQuestion() {
-            const q = questions[currentStep];
-            document.getElementById('question-counter').innerText = "Situación 0" + (currentStep + 1) + " de 5";
-            document.getElementById('question-text').innerText = q.text;
-            document.getElementById('btn-0').innerText = q.options[0].text;
-            document.getElementById('btn-1').innerText = q.options[1].text;
+        const board = document.getElementById('game-board');
+        const movesDisplay = document.getElementById('moves');
+        const matchesDisplay = document.getElementById('matches');
+        const winMessage = document.getElementById('win-message');
+
+        function initGame() {
+            board.innerHTML = '';
+            winMessage.classList.add('hidden');
+            board.classList.remove('hidden');
+            flippedCards = [];
+            matchedCount = 0;
+            movesCount = 0;
+            updateStats();
+            lockBoard = false;
+
+            cards = [];
+            pairsData.forEach(pair => {
+                cards.push({ matchId: pair.id, type: 'quote', text: `"${pair.quote}"`, color: pair.color });
+                cards.push({ matchId: pair.id, type: 'category', text: pair.category, color: pair.color });
+            });
+
+            cards.sort(() => 0.5 - Math.random());
+
+            cards.forEach((card, index) => {
+                const cardElement = document.createElement('div');
+                
+                // Reducimos altura a h-32/h-40 porque ahora son mucho más anchas
+                cardElement.className = 'card cursor-pointer h-32 md:h-40 bg-secondary rounded-lg flex items-center justify-center p-6 text-center shadow-sm hover:opacity-95 transition-all select-none text-transparent border-2 border-transparent overflow-hidden';
+                
+                cardElement.dataset.matchId = card.matchId;
+                cardElement.dataset.index = index;
+                cardElement.dataset.color = card.color;
+                
+                // Estilo de texto: Frases en text-lg y Categorías en text-xl
+                const textStyle = card.type === 'quote' 
+                    ? 'font-medium italic text-sm md:text-lg leading-snug' 
+                    : 'font-extrabold uppercase text-base md:text-xl tracking-[0.2em]';
+                
+                cardElement.innerHTML = `<span class="pointer-events-none ${textStyle}">${card.text}</span>`;
+                
+                cardElement.addEventListener('click', flipCard);
+                board.appendChild(cardElement);
+            });
         }
 
-        function answerQuestion(optionIndex) {
-            // Suma 1 punto al pilar correspondiente a la respuesta elegida
-            let chosenPillar = questions[currentStep].options[optionIndex].pillar;
-            scores[chosenPillar]++;
-            
-            currentStep++;
-            if (currentStep < questions.length) {
-                loadQuestion();
-            } else {
-                showResult();
+        function flipCard() {
+            if (lockBoard) return;
+            if (this.classList.contains('matched')) return;
+            if (flippedCards.length === 1 && flippedCards[0].dataset.index === this.dataset.index) return;
+
+            // Revelar carta: Fondo blanco y el color de texto correspondiente
+            this.classList.remove('bg-secondary', 'text-transparent', 'border-transparent');
+            this.classList.add('bg-white', 'border-gray-200', 'shadow-md');
+            this.style.color = this.dataset.color; // APLICAMOS EL COLOR HEX
+
+            flippedCards.push(this);
+
+            if (flippedCards.length === 2) {
+                movesCount++;
+                updateStats();
+                checkForMatch();
             }
         }
 
-        function showResult() {
-            document.getElementById('question-content').classList.add('hidden');
-            document.getElementById('result-content').classList.remove('hidden');
-            
-            // Lógica para encontrar el pilar con más puntos
-            let winningPillar = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
-
-            document.getElementById('profile-name').innerText = winningPillar;
-            document.getElementById('profile-desc').innerText = profiles[winningPillar];
+        function checkForMatch() {
+            let isMatch = flippedCards[0].dataset.matchId === flippedCards[1].dataset.matchId;
+            if (isMatch) {
+                disableCards();
+            } else {
+                unflipCards();
+            }
         }
 
-        // Inicia el test automáticamente
-        document.addEventListener('DOMContentLoaded', loadQuestion);
+        function disableCards() {
+            flippedCards[0].classList.add('matched', 'opacity-40', 'cursor-default', 'bg-gray-50');
+            flippedCards[1].classList.add('matched', 'opacity-40', 'cursor-default', 'bg-gray-50');
+            matchedCount++;
+            updateStats();
+            flippedCards = [];
+
+            if (matchedCount === pairsData.length) {
+                setTimeout(() => {
+                    board.classList.add('hidden');
+                    winMessage.classList.remove('hidden');
+                }, 600);
+            }
+        }
+
+        function unflipCards() {
+            lockBoard = true;
+            setTimeout(() => {
+                flippedCards.forEach(card => {
+                    card.classList.remove('bg-white', 'border-gray-200', 'shadow-md');
+                    card.classList.add('bg-secondary', 'text-transparent', 'border-transparent');
+                    card.style.color = ''; // Limpiamos el color al ocultar
+                });
+                flippedCards = [];
+                lockBoard = false;
+            }, 1500); 
+        }
+
+        function updateStats() {
+            movesDisplay.innerText = movesCount;
+            matchesDisplay.innerText = `${matchedCount} / ${pairsData.length}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', initGame);
     </script>
+
+    
 </body>
 </html>

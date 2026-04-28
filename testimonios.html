@@ -58,67 +58,93 @@
             </div>
         </nav>
 
-        <main class="max-w-4xl mx-auto px-6 py-16">
-            <div class="text-center mb-12">
-                <h1 class="text-3xl md:text-4xl font-extrabold text-primary mb-4">Lo que dicen los lectores</h1>
-                <p class="text-lg text-muted">Impacto real en emprendedores, docentes y líderes del YaquiValley.</p>
-            </div>
+        
+        <main class="max-w-5xl mx-auto px-6 py-16 flex-grow">
+            
+            <header class="text-center mb-16">
+                <h1 class="text-3xl md:text-5xl font-extrabold text-primary mb-4 tracking-tight">Muro de Lectores</h1>
+                <p class="text-lg text-muted max-w-2xl mx-auto">Comparte tu experiencia con el libro y únete a la conversación sobre innovación en el YaquiValley.</p>
+            </header>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative">
-                    <div class="flex text-secondary mb-4">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <section class="bg-white p-8 md:p-10 rounded-xl shadow-sm border border-gray-100 mb-16 max-w-3xl mx-auto">
+                <h3 class="text-xl font-bold text-primary mb-6 text-center md:text-left">Deja tu testimonio</h3>
+                <form id="comment-form" class="flex flex-col gap-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-xs font-bold text-primary uppercase tracking-wider ml-1">Nombre</label>
+                            <input type="text" id="comment-name" placeholder="Ej. Sebastián Martínez" required 
+                                class="p-3 bg-gray-50 border border-gray-200 rounded-md text-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-xs font-bold text-primary uppercase tracking-wider ml-1">Tu Rol</label>
+                            <input type="text" id="comment-role" placeholder="Ej. Estudiante de Software" required 
+                                class="p-3 bg-gray-50 border border-gray-200 rounded-md text-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
+                        </div>
                     </div>
-                    <p class="text-gray-700 italic mb-6">"El mindset innovador no es solo un libro, es una sacudida mental. Directo al grano y sin teoría aburrida. Nos ayudó a destrabar el desarrollo de nuestro último prototipo en cuestión de días."</p>
-                    <div>
-                        <p class="font-bold text-primary">Carlos M.</p>
-                        <p class="text-xs text-muted uppercase tracking-wider">Fundador de Startup Tech</p>
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-xs font-bold text-primary uppercase tracking-wider ml-1">Tu Opinión</label>
+                        <textarea id="comment-text" rows="3" placeholder="¿Cómo te ayudó este libro?" required 
+                            class="p-3 bg-gray-50 border border-gray-200 rounded-md text-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none resize-none transition-all"></textarea>
                     </div>
+                    
+                    <button type="submit" class="bg-primary text-white font-bold py-4 rounded-md uppercase tracking-widest text-sm hover:bg-slate-700 transition-all hover:shadow-lg">
+                        Publicar mi Comentario
+                    </button>
+                </form>
+            </section>
+
+            <div id="comments-feed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 </div>
 
-                <div class="bg-primary text-white p-8 rounded-xl shadow-md border-t-4 border-secondary transform md:-translate-y-4">
-                    <div class="flex text-secondary mb-4">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    </div>
-                    <p class="italic mb-6 text-gray-200">"Como docente de ITSON, siempre busco formas de enseñar a mis alumnos a pensar fuera de la caja. Las frases del Ing. Gaxiola son oro puro; las utilizamos para iniciar debates en el aula con resultados increíbles."</p>
-                    <div>
-                        <p class="font-bold text-white">Laura G.</p>
-                        <p class="text-xs text-gray-400 uppercase tracking-wider">Profesora Universitaria</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <div class="flex text-secondary mb-4">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    </div>
-                    <p class="text-gray-700 italic mb-6">"La innovación suele venderse como algo inalcanzable. Este ebook la desmitifica y te da herramientas para aplicarla hoy mismo. Una lectura rápida pero profundamente transformadora."</p>
-                    <div>
-                        <p class="font-bold text-primary">Roberto V.</p>
-                        <p class="text-xs text-muted uppercase tracking-wider">Director de Operaciones</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="mt-16 text-center">
-                <a href="index.html" class="inline-block bg-secondary hover:bg-[#a38a5e] text-white px-8 py-4 text-sm font-extrabold rounded-md uppercase tracking-wide shadow-lg transition-all hover:-translate-y-1">
-                    Descargar el Ebook Gratis
-                </a>
-            </div>
         </main>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const feed = document.getElementById('comments-feed');
+                const form = document.getElementById('comment-form');
+
+                // Simulación inicial de testimonios reales del PDF
+                let comments = [
+                    { name: "Carlos M.", role: "Fundador de Startup Tech", text: "El mindset innovador no es solo un libro, es una sacudida mental. Directo al grano y sin teoría aburrida." },
+                    { name: "Laura G.", role: "Profesora Universitaria", text: "Como docente de ITSON, siempre busco formas de enseñar a mis alumnos a pensar fuera de la caja. Estas frases son oro puro." },
+                    { name: "Roberto V.", role: "Director de Operaciones", text: "La innovación suele venderse como algo inalcanzable. Este ebook la desmitifica y te da herramientas para aplicarla hoy mismo." }
+                ];
+
+                function renderComments() {
+                    feed.innerHTML = '';
+                    comments.forEach(c => {
+                        feed.innerHTML += `
+                            <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm border-t-4 border-secondary flex flex-col justify-between hover:shadow-md transition-shadow">
+                                <p class="text-gray-700 italic mb-6 leading-relaxed">"${c.text}"</p>
+                                <div>
+                                    <p class="font-bold text-primary text-sm">${c.name}</p>
+                                    <p class="text-[10px] text-muted uppercase tracking-widest font-bold mt-1">${c.role}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                form.onsubmit = (e) => {
+                    e.preventDefault();
+                    const newComment = {
+                        name: document.getElementById('comment-name').value,
+                        role: document.getElementById('comment-role').value,
+                        text: document.getElementById('comment-text').value
+                    };
+                    
+                    // Agregamos el nuevo comentario al inicio de la lista
+                    comments.unshift(newComment);
+                    renderComments();
+                    
+                    // Pequeña notificación visual
+                    alert(`¡Gracias ${newComment.name}! Tu testimonio se ha publicado correctamente.`);
+                    form.reset();
+                };
+
+                renderComments();
+            });
+        </script>
         <footer class="bg-primary text-white/70 py-12 border-t-4 border-secondary mt-auto">
                 <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
                     
