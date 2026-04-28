@@ -39,6 +39,29 @@
     }
     </style>
 
+    <style>
+      /* NUEVA Animación para los logos */
+        @keyframes scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(calc(-50% - 3rem));
+        }
+        }
+
+        .logo-track {
+        display: flex;
+        width: max-content;
+        animation: scroll 25s linear infinite;
+        }
+
+        .logo-track:hover {
+        animation-play-state: paused;
+        }
+    </style>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
@@ -109,27 +132,39 @@
                 </form>
             </div>
 
-            <div class="hidden md:flex justify-center">
+            <div class="hidden md:flex justify-center relative group perspective-1000">
+                <div class="absolute inset-0 bg-secondary/30 rounded-full blur-3xl scale-125 transform -translate-y-4 z-0 transition-transform duration-700 group-hover:scale-150"></div>
+                
                 <img src="src/mockup.png" alt="Ebook El Mindset Innovador" 
-                     class="w-full max-w-[320px] h-auto drop-shadow-2xl">
+                     class="w-full max-w-[320px] h-auto drop-shadow-2xl relative z-10 transition-transform duration-500 transform group-hover:-translate-y-4 group-hover:rotate-3 group-hover:scale-105">
             </div>
 
         </header>
 
-        <section class="bg-white py-10 border-b border-gray-200 text-center w-full mt-10">
-            <div class="flex justify-center items-center flex-wrap gap-8 md:gap-14">
-                <img src="src/logo-itson.png" alt="ITSON" 
-                    class="h-16 md:h-16 w-auto object-contain grayscale opacity-100 hover:grayscale-0 transition-all duration-300">
-                
-                <img src="src/logo-startup-weekend.png" alt="Startup Weekend" 
-                    class="h-16 md:h-16 w-auto object-contain grayscale opacity-100 hover:grayscale-0 transition-all duration-300">
-                
-                <img src="src/logo-sahuarolabs.png" alt="SahuaroLabs" 
-                    class="h-16 md:h-16 w-auto object-contain grayscale opacity-100 hover:grayscale-0 transition-all duration-300">
-                
-                <img src="src/logo-yaquivalley.png" alt="Yaqui Valley" 
-                    class="h-16 md:h-16 w-auto object-contain grayscale opacity-100 hover:grayscale-0 transition-all duration-300">
+        <section class="bg-white py-10 border-b border-gray-200 text-center w-full mt-10 overflow-hidden shadow-[inset_0_0_20px_rgba(0,0,0,0.02)]">
+            <div class="max-w-5xl mx-auto px-6 mb-6">
+                <p class="text-[11px] uppercase tracking-[2px] text-muted font-bold font-sans">
+                    Trayectoria avalada por instituciones de alto impacto:
+                </p>
             </div>
+            
+            <div class="relative overflow-hidden w-full">
+            <div class="logo-track items-center gap-16 md:gap-24 px-8">
+
+                <!-- bloque original -->
+                <img src="src/logo-itson.png" class="h-12 md:h-16 w-auto">
+                <img src="src/logo-startup-weekend.png" class="h-12 md:h-16 w-auto">
+                <img src="src/logo-sahuarolabs.png" class="h-12 md:h-16 w-auto">
+                <img src="src/logo-yaquivalley.png" class="h-12 md:h-16 w-auto">
+
+                <!-- duplicado -->
+                <img src="src/logo-itson.png" class="h-12 md:h-16 w-auto">
+                <img src="src/logo-startup-weekend.png" class="h-12 md:h-16 w-auto">
+                <img src="src/logo-sahuarolabs.png" class="h-12 md:h-16 w-auto">
+                <img src="src/logo-yaquivalley.png" class="h-12 md:h-16 w-auto">
+
+            </div>
+        </div>
         </section>
 
        

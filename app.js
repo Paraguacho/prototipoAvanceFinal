@@ -31,26 +31,29 @@ const bookQuotes = [
     
     const shuffled = [...bookQuotes].sort(() => 0.5 - Math.random());
     const selected = shuffled.slice(0, 3);
-    
-    selected.forEach(q => {
-        // Obtenemos el color correspondiente o un gris por defecto
+    const rotations = ['-rotate-1', 'rotate-2', '-rotate-2'];
+
+    selected.forEach((q, index) => {
         const catColor = categoryColors[q.cat] || '#2c3e50';
+        
+        // Asignamos una rotación diferente a cada tarjeta
+        const rotationClass = rotations[index % 3];
 
         display.innerHTML += `
-            <div class="relative overflow-hidden border border-gray-200 border-l-4 p-6 sm:p-8 bg-white rounded-lg shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full" style="border-left-color: ${catColor}">
+            <div class="relative overflow-hidden border border-gray-100 border-l-4 p-6 sm:p-8 bg-white rounded-xl shadow-xl hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-full transform ${rotationClass} hover:rotate-0" style="border-left-color: ${catColor}">
                 
-                <span class="absolute top-[-20px] left-2 text-[120px] text-gray-50 font-serif leading-none select-none z-0 pointer-events-none">
+                <span class="absolute top-[-10px] left-2 text-[140px] text-gray-50 font-serif leading-none select-none z-0 pointer-events-none opacity-60">
                     "
                 </span>
 
                 <div class="relative z-10 mb-6 mt-4 flex-grow flex items-center">
-                    <p class="text-lg md:text-xl font-bold italic leading-relaxed" style="color: ${catColor}">
+                    <p class="text-lg md:text-xl font-serif font-bold italic leading-relaxed" style="color: ${catColor}">
                         "${q.text}"
                     </p>
                 </div>
                 
                 <div class="relative z-10 text-left mt-auto">
-                    <p class="inline-block text-[11px] bg-gray-50 px-3 py-1.5 rounded-md uppercase font-extrabold tracking-widest border border-gray-100" style="color: ${catColor}">
+                    <p class="inline-block text-[11px] bg-white px-3 py-1.5 rounded-md uppercase font-extrabold tracking-widest shadow-sm border border-gray-100" style="color: ${catColor}">
                         ${q.cat}
                     </p>
                 </div>
