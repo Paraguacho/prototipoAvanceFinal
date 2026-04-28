@@ -6,29 +6,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>El Mindset Innovador | Frases</title>
         
-        <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 
-        <script>
-        tailwind.config = {
-            theme: {
-            extend: {
-                colors: {
-                primary: '#2c3e50',   /* Azul pizarra oscuro */
-                secondary: '#b89f71', /* Tono dorado/arena */
-                muted: '#6b7280',     /* Gris para textos secundarios */
-                bgmain: '#f8f9fa'     /* Fondo general */
-                },
-                fontFamily: {
-                sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-                }
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#2c3e50',   
+              secondary: '#b89f71', 
+              muted: '#6b7280',     
+              bgmain: '#f8f9fa'     
+            },
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              serif: ['"Playfair Display"', 'Georgia', 'serif'], /* NUEVA FUENTE SERIF */
             }
-            }
+          }
         }
-        </script>
+      }
+    </script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    </head>
-    <body class="bg-bgmain text-gray-800 flex flex-col min-h-screen">
+    <style>
+      .bg-pattern {
+        background-color: #f8f9fa;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232c3e50' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-size:80px 80px;
+        background-attachment:fixed;
+    }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+    <body class="bg-pattern text-gray-800 flex flex-col min-h-screen">
 
         <nav class="sticky top-0 z-50 bg-primary shadow-md py-4">
             <div class="max-w-4xl mx-auto px-6">
@@ -71,7 +86,7 @@
                         <img src="src/jesus-gaxiola.jpg" alt="Jesús Antonio Gaxiola Meléndrez" class="w-full max-w-[180px] h-auto rounded-xl border-4 border-white shadow-lg object-cover">
                     </div>
                     
-                    <h2 class="text-xl font-bold text-primary leading-tight mb-3">Jesús Antonio Gaxiola Meléndrez</h2>
+                    <h2 class="text-2xl font-serif font-black text-primary leading-tight mb-3">Jesús Antonio Gaxiola Meléndrez</h2>
                     <p class="text-sm text-secondary font-bold mb-6">Ingeniero Industrial y de Sistemas, MBA e impulsor del YaquiValley</p>
                     
                     <div class="pt-5 border-t border-gray-100 text-sm flex flex-col gap-2">
@@ -82,7 +97,7 @@
 
                 <div class="text-gray-800">
                     <section class="mb-10">
-                        <h3 class="text-2xl font-extrabold text-primary mb-6">Yo soy...</h3>
+                        <h3 class="text-4xl md:text-6xl font-serif font-black text-primary leading-tight mb-4 tracking-tight">Yo soy...</h3>
                         <p class="text-lg font-medium text-primary border-l-4 border-secondary pl-5 mb-8 bg-gray-50 p-4 rounded-r-lg">
                             Mentor de startups, organizador de StartupWeekend, emprendedor, SocialMedia manager, maestro universitario y socio fundador de SahuroLabs.com y Yaquivalley.mx.
                         </p>
