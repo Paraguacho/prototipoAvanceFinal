@@ -31,6 +31,23 @@
     </script>
 
     <style>
+        .highlight-marker {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+    }
+    .highlight-marker::after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        height: 12px;
+        background-color: rgba(184, 159, 113, 0.35); /* Color secondary con opacidad */
+        transform: rotate(-1deg);
+        z-index: -1;
+        border-radius: 2px;
+    }
       .bg-pattern {
         background-color: #f8f9fa;
         background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232c3e50' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -44,34 +61,14 @@
 
 <body class="bg-pattern text-gray-800 flex flex-col min-h-screen">
 
-         <nav class="sticky top-0 z-50 bg-primary shadow-md py-4">
+        <nav id="smart-nav" class="sticky top-0 z-50 bg-primary transition-all duration-500 py-6">
             <div class="max-w-4xl mx-auto px-6">
                 <ul class="flex flex-wrap gap-4 sm:gap-6 list-none m-0 p-0">
-                    <li>
-                        <a href="index.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                            Inicio
-                        </a>
-                    </li>
-                    <li>
-                        <a href="el-libro.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                            El Libro
-                        </a>
-                    </li>
-                    <li>
-                        <a href="about.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                            Acerca del Autor
-                        </a>
-                    </li>
-                    <li>
-                        <a href="testimonios.html" class="text-white bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                            Testimonios
-                        </a>
-                    </li>
-                    <li>
-                        <a href="gamificacion.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">
-                            Desafío
-                        </a>
-                    </li>
+                    <li><a href="index.html" class="text-white/60 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Inicio</a></li>
+                    <li><a href="el-libro.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">El Libro</a></li>
+                    <li><a href="about.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Acerca del Autor</a></li>
+                    <li><a href="testimonios.html" class="text-white bg-white/10hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Testimonios</a></li>
+                    <li><a href="gamificacion.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Desafío</a></li>
                 </ul>
             </div>
         </nav>
@@ -82,8 +79,8 @@
             <header class="text-center mb-16 relative z-10">
                 <span class="inline-block text-secondary font-bold text-sm uppercase tracking-[3px] mb-4">Comunidad</span>
                 <h1 class="text-4xl md:text-6xl font-serif font-black text-primary mb-6 tracking-tight">Muro de Lectores</h1>
-                <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed">
-                    Comparte tu experiencia con el libro y únete a la conversación sobre innovación en el ecosistema.
+                <p class="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+                    Comparte tu experiencia y únete a la <span class="highlight-marker">conversación</span> sobre innovación...
                 </p>
             </header>
 
@@ -224,5 +221,17 @@
                 </div>
         </footer>
 
+        <script>
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('smart-nav');
+                if (window.scrollY > 50) {
+                    nav.classList.remove('py-6', 'bg-primary');
+                    nav.classList.add('py-3', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
+                } else {
+                    nav.classList.add('py-6', 'bg-primary');
+                    nav.classList.remove('py-3', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
+                }
+            });
+        </script>
     </body>
 </html>
