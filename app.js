@@ -16,48 +16,48 @@ const bookQuotes = [
 
     
  function generateQuotes() {
-
-        const categoryColors = {
+    const categoryColors = {
         "La Semilla": "#4a7c59",
         "Ideación y Exploración": "#d4a017",
         "Desarrollo y Validación": "#113cd6",
         "Implementación y Escalabilidad": "#ff8833",
         "Aprendizaje y Evolución": "#8e44ad"
-        };
-        const display = document.getElementById('quote-display');
-        if (!display) return; 
-        
-        display.innerHTML = '';
-        
-        const shuffled = [...bookQuotes].sort(() => 0.5 - Math.random());
-        const selected = shuffled.slice(0, 3);
-        
-        selected.forEach(q => {
-            // Obtenemos el color correspondiente o un gris por defecto
-            const catColor = categoryColors[q.cat] || '#2c3e50';
+    };
+    
+    const display = document.getElementById('quote-display');
+    if (!display) return; 
+    
+    display.innerHTML = '';
+    
+    const shuffled = [...bookQuotes].sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 3);
+    
+    selected.forEach(q => {
+        // Obtenemos el color correspondiente o un gris por defecto
+        const catColor = categoryColors[q.cat] || '#2c3e50';
 
-            display.innerHTML += `
-                <div class="relative overflow-hidden border border-gray-200 border-l-4 p-8 sm:p-10 bg-white rounded-lg shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full" style="border-left-color: ${catColor}">
-                    
-                    <span class="absolute top-[-20px] left-4 text-[160px] text-gray-100 font-serif leading-none select-none z-0 pointer-events-none">
-                        "
-                    </span>
+        display.innerHTML += `
+            <div class="relative overflow-hidden border border-gray-200 border-l-4 p-6 sm:p-8 bg-white rounded-lg shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full" style="border-left-color: ${catColor}">
+                
+                <span class="absolute top-[-20px] left-2 text-[120px] text-gray-50 font-serif leading-none select-none z-0 pointer-events-none">
+                    "
+                </span>
 
-                    <div class="relative z-10 mb-10 mt-4">
-                        <p class="text-2xl md:text-3xl font-semibold text-primary italic leading-tight">
-                            "${q.text}"
-                        </p>
-                    </div>
-                    
-                    <div class="relative z-10 text-left mt-auto">
-                        <p class="inline-block text-[12px] bg-gray-50 px-4 py-1.5 rounded-md uppercase font-bold tracking-widest" style="color: ${catColor}">
-                            ${q.cat}
-                        </p>
-                    </div>
+                <div class="relative z-10 mb-6 mt-4 flex-grow flex items-center">
+                    <p class="text-lg md:text-xl font-bold italic leading-relaxed" style="color: ${catColor}">
+                        "${q.text}"
+                    </p>
                 </div>
-            `;
-        });
-    }
+                
+                <div class="relative z-10 text-left mt-auto">
+                    <p class="inline-block text-[11px] bg-gray-50 px-3 py-1.5 rounded-md uppercase font-extrabold tracking-widest border border-gray-100" style="color: ${catColor}">
+                        ${q.cat}
+                    </p>
+                </div>
+            </div>
+        `;
+    });
+}
 
 // EXPORTAR IMAGEN
     function exportImage() {
