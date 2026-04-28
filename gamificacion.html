@@ -105,6 +105,45 @@
         </section>
     </main>
 
+    <section class="relative py-24 overflow-hidden reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+    <div class="absolute inset-0 bg-primary z-0"></div>
+    <div class="absolute inset-0 opacity-10 bg-pattern z-10"></div>
+    <div class="absolute top-0 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-20 text-center">
+        <span class="inline-block text-secondary font-bold text-sm uppercase tracking-[4px] mb-6">El siguiente paso</span>
+        
+        <h2 class="text-4xl md:text-6xl font-serif font-black text-white mb-8 leading-tight">
+            ¿Listo para llevar tu <br> 
+            <span class="relative inline-block">
+                <span class="relative z-10">mentalidad</span>
+                <span class="absolute bottom-2 left-0 w-full h-4 bg-secondary/30 -rotate-1 z-0"></span>
+            </span> 
+            al siguiente nivel?
+        </h2>
+        
+        <p class="text-white/70 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+            Únete a los líderes y emprendedores que ya están aplicando el <strong class="text-white">Mindset Innovador</strong> para transformar sus ideas en realidades.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="index.html" class="group relative px-10 py-5 bg-secondary text-white font-bold rounded-xl uppercase tracking-widest text-sm shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                <span class="relative z-10">Descargar Ebook Gratis</span>
+                <div class="absolute inset-0 bg-white/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+            </a>
+            
+            <a href="gamificacion.html" class="px-10 py-5 border-2 border-white/20 text-white font-bold rounded-xl uppercase tracking-widest text-sm hover:bg-white/5 transition-all">
+                Probar el Desafío
+            </a>
+        </div>
+        
+        <p class="mt-12 text-white/40 text-xs font-medium flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            Más de 30 años de experiencia condensados en una guía práctica.
+        </p>
+    </div>
+    </section>
     <footer class="bg-primary text-white/70 py-12 border-t-4 border-secondary mt-auto">
         <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
@@ -273,6 +312,30 @@
                 nav.classList.add('py-6', 'bg-primary');
                 nav.classList.remove('py-3', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
             }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.15, 
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Remueve las clases ocultas y añade las de estado final
+                        entry.target.classList.remove('opacity-0', 'translate-y-12');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-item').forEach((el) => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>
