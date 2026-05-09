@@ -74,18 +74,47 @@ const bookQuotes = [
     }
 
 // SIMULACIÓN DE REGISTRO
-    function handleDownload(e) {
-        e.preventDefault();
-        
-        // Capturamos el nombre ingresado
-        const name = document.getElementById('userName').value;
-        
-        // Mostramos un mensaje personalizado
-        alert(`¡Hola ${name}! Registro exitoso. El ebook se enviará a tu correo.`);
-        
-        // Limpiamos el formulario
-        e.target.reset();
-    }
+    // SIMULACIÓN DE REGISTRO -> AHORA ES REAL
+function handleDownload(e) {
+    e.preventDefault();
+    
+    // 1. Capturamos los datos
+    const name = document.getElementById('userName').value;
+    const email = document.getElementById('userEmail').value;
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    
+    // 2. Cambiamos el texto del botón
+    const originalText = submitBtn.innerText;
+    submitBtn.innerText = "Enviando...";
+    submitBtn.disabled = true;
+
+    // 🔴 ASEGÚRATE DE PEGAR AQUÍ TU URL CORRECTA DE GOOGLE SCRIPT
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzpjdQa5TeVCGSi1_hZs1AL__4kkDrE4mrkceEDfO1FhpV294AJ60sjukvVuDdwBKj3/exec'
+    // 3. Empaquetamos los datos
+    const data = new URLSearchParams();
+    data.append('nombre', name);
+    data.append('correo', email);
+
+    // 4. Enviamos los datos (Agregamos mode: 'no-cors' para evitar el bloqueo del navegador)
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: data,
+        mode: 'no-cors' // <--- ESTA ES LA MAGIA QUE SOLUCIONA EL ERROR
+    })
+    .then(() => {
+        // Al usar no-cors, la respuesta es opaca, pero sabemos que se envió
+        alert(`¡Éxito ${name}! Tus datos se han guardado. Pronto recibirás el Ebook en tu correo.`);
+        e.target.reset(); // Limpia el formulario
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+    })
+    .catch(error => {
+        console.error('Error!', error.message);
+        alert("Hubo un error al guardar. Por favor, revisa tu conexión a internet.");
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+    });
+}
 
 
 // Inicializar al cargar la página
