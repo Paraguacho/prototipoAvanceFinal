@@ -347,5 +347,26 @@
             });
         });
     </script>
+
+    <div id="success-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div id="success-modal-content" class="bg-white p-8 md:p-10 rounded-3xl shadow-2xl max-w-md w-full mx-4 transform scale-95 transition-transform duration-300 flex flex-col items-center text-center border-t-4 border-secondary">
+            
+            <div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mb-6 shadow-inner">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            
+            <h3 class="text-3xl font-serif font-black text-primary mb-3">¡Todo listo!</h3>
+            <p id="modal-message" class="text-gray-600 mb-8 leading-relaxed text-sm md:text-base">
+                Tus datos se han guardado con éxito.
+            </p>
+            
+            <button id="close-modal-btn" class="w-full bg-primary hover:bg-[#1a252f] text-white font-bold py-4 rounded-xl uppercase tracking-[0.2em] text-sm transition-all shadow-lg hover:-translate-y-1">
+                Entendido
+            </button>
+        </div>
+    </div>
+    
     </body>
 </html>

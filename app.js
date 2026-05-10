@@ -78,39 +78,53 @@ const bookQuotes = [
 function handleDownload(e) {
     e.preventDefault();
     
-    // 1. Capturamos los datos
     const name = document.getElementById('userName').value;
     const email = document.getElementById('userEmail').value;
     const submitBtn = e.target.querySelector('button[type="submit"]');
     
-    // 2. Cambiamos el texto del botón
     const originalText = submitBtn.innerText;
-    submitBtn.innerText = "Enviando...";
+    submitBtn.innerText = "ENVIANDO...";
     submitBtn.disabled = true;
 
-    // 🔴 ASEGÚRATE DE PEGAR AQUÍ TU URL CORRECTA DE GOOGLE SCRIPT
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxAlzGXu2fWu_rFyujLOv0G2CjFMdX75Ck70e8FPMUzvb5DKoGZ8eqt6TMIHotoyRY/exec'
-    // 3. Empaquetamos los datos
-    const data = new URLSearchParams();
-    data.append('nombre', name);
-    data.append('correo', email);
+    // 🔴 ASEGÚRATE DE MANTENER TU URL DE APPS SCRIPT AQUÍ
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxAlzGXu2fWu_rFyujLOv0G2CjFMdX75Ck70e8FPMUzvb5DKoGZ8eqt6TMIHotoyRY/exec';
 
-    // 4. Enviamos los datos (Agregamos mode: 'no-cors' para evitar el bloqueo del navegador)
+    const formData = new FormData();
+    formData.append('nombre', name);
+    formData.append('correo', email);
+
     fetch(scriptURL, { 
         method: 'POST', 
-        body: data,
-        mode: 'no-cors' // <--- ESTA ES LA MAGIA QUE SOLUCIONA EL ERROR
+        body: formData,
+        mode: 'no-cors' 
     })
     .then(() => {
-        // Al usar no-cors, la respuesta es opaca, pero sabemos que se envió
-        alert(`¡Éxito ${name}! Tus datos se han guardado. Pronto recibirás el Ebook en tu correo.`);
-        e.target.reset(); // Limpia el formulario
+        // 1. Limpiamos el formulario y restauramos el botón
+        e.target.reset();
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
+
+        // 2. Seleccionamos el modal y personalizamos el texto
+        const modal = document.getElementById('success-modal');
+        const modalContent = document.getElementById('success-modal-content');
+        const modalMessage = document.getElementById('modal-message');
+        
+        modalMessage.innerHTML = `¡Gracias por tu interés, <strong>${name}</strong>!<br>Hemos enviado la copia oficial en PDF a tu bandeja de entrada.<br><br><span class="text-xs text-gray-400 italic">Por favor, revisa tu carpeta de Spam o Promociones si no lo encuentras en los próximos minutos.</span>`;
+        // 3. Mostramos el modal con animación (quitamos opacity-0)
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
+
+        // 4. Lógica para cerrar el modal al hacer clic en el botón
+        document.getElementById('close-modal-btn').onclick = function() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+        };
     })
     .catch(error => {
-        console.error('Error!', error.message);
-        alert("Hubo un error al guardar. Por favor, revisa tu conexión a internet.");
+        // Solo dejamos el alert normal para errores de conexión
+        alert("Hubo un error de conexión al enviar tus datos. Intenta nuevamente.");
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
     });
