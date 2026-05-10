@@ -89,7 +89,7 @@ function handleDownload(e) {
     submitBtn.disabled = true;
 
     // 🔴 ASEGÚRATE DE PEGAR AQUÍ TU URL CORRECTA DE GOOGLE SCRIPT
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzpjdQa5TeVCGSi1_hZs1AL__4kkDrE4mrkceEDfO1FhpV294AJ60sjukvVuDdwBKj3/exec'
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxAlzGXu2fWu_rFyujLOv0G2CjFMdX75Ck70e8FPMUzvb5DKoGZ8eqt6TMIHotoyRY/exec'
     // 3. Empaquetamos los datos
     const data = new URLSearchParams();
     data.append('nombre', name);
