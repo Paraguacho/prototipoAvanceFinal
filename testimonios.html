@@ -23,7 +23,7 @@
             },
             fontFamily: {
               sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-              serif: ['"Playfair Display"', 'Georgia', 'serif'], /* NUEVA FUENTE SERIF */
+              serif: ['"Playfair Display"', 'Georgia', 'serif'],
             }
           }
         }
@@ -31,29 +31,63 @@
     </script>
 
     <style>
+        /* ── Highlight marker ── */
         .highlight-marker {
-        position: relative;
-        display: inline-block;
-        white-space: nowrap;
-    }
-    .highlight-marker::after {
-        content: "";
-        position: absolute;
-        bottom: 2px;
-        left: 0;
-        width: 100%;
-        height: 12px;
-        background-color: rgba(184, 159, 113, 0.35); /* Color secondary con opacidad */
-        transform: rotate(-1deg);
-        z-index: -1;
-        border-radius: 2px;
-    }
-      .bg-pattern {
-        background-color: #f8f9fa;
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232c3e50' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        background-size:80px 80px;
-        background-attachment:fixed;
-    }
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .highlight-marker::after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background-color: rgba(184, 159, 113, 0.35);
+            transform: rotate(-1deg);
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        /* ── Background pattern ── */
+        .bg-pattern {
+            background-color: #f8f9fa;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232c3e50' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 80px 80px;
+            background-attachment: fixed;
+        }
+
+        /* ── Mobile nav: horizontal scroll ── */
+        @media (max-width: 639px) {
+            #smart-nav .nav-list {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                flex-wrap: nowrap;
+                gap: 0.5rem;
+                padding-bottom: 4px;
+            }
+            #smart-nav .nav-list::-webkit-scrollbar { display: none; }
+            #smart-nav .nav-list li a {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.7rem;
+                white-space: nowrap;
+            }
+        }
+
+        /* ── Testimony cards: avatar needs extra top padding on mobile ── */
+        .testimony-card {
+            padding-top: 3rem; /* space for the floating avatar */
+        }
+        @media (min-width: 768px) {
+            .testimony-card {
+                padding-top: 2.5rem;
+            }
+        }
+
+        /* ── Prevent horizontal overflow ── */
+        html, body { overflow-x: hidden; }
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -61,239 +95,238 @@
 
 <body class="bg-pattern text-gray-800 flex flex-col min-h-screen">
 
-        <nav id="smart-nav" class="sticky top-0 z-50 bg-primary transition-all duration-500 py-6">
-            <div class="max-w-4xl mx-auto px-6">
-                <ul class="flex flex-wrap gap-4 sm:gap-6 list-none m-0 p-0">
-                    <li><a href="index.html" class="text-white/60 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Inicio</a></li>
-                    <li><a href="el-libro.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">El Libro</a></li>
-                    <li><a href="about.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Acerca del Autor</a></li>
-                    <li><a href="testimonios.html" class="text-white bg-white/10hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Testimonios</a></li>
-                    <li><a href="gamificacion.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Desafío</a></li>
-                </ul>
-            </div>
-        </nav>
+    <!-- ══════════════ NAV ══════════════ -->
+    <nav id="smart-nav" class="sticky top-0 z-50 bg-primary transition-all duration-500 py-4 sm:py-6">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <ul class="nav-list flex list-none m-0 p-0 gap-2 sm:gap-6 sm:flex-wrap">
+                <li><a href="index.html"        class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Inicio</a></li>
+                <li><a href="el-libro.html"     class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">El Libro</a></li>
+                <li><a href="about.html"        class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Autor</a></li>
+                <li><a href="testimonios.html"  class="text-white bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Testimonios</a></li>
+                <li><a href="gamificacion.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Desafío</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <!-- ══════════════ MAIN ══════════════ -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 flex-grow w-full">
         
-        <main class="max-w-6xl mx-auto px-6 py-16 flex-grow">
-            
-            <header class="text-center mb-16 relative z-10">
-                <span class="inline-block text-secondary font-bold text-sm uppercase tracking-[3px] mb-4">Comunidad</span>
-                <h1 class="text-4xl md:text-6xl font-serif font-black text-primary mb-6 tracking-tight">Muro de Lectores</h1>
-                <p class="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-                    Comparte tu experiencia y únete a la <span class="highlight-marker">conversación</span> sobre innovación...
-                </p>
-            </header>
+        <!-- ── Header ── -->
+        <header class="text-center mb-10 sm:mb-16 relative z-10 px-2 sm:px-0">
+            <span class="inline-block text-secondary font-bold text-xs sm:text-sm uppercase tracking-[3px] mb-3 sm:mb-4">Comunidad</span>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-serif font-black text-primary mb-4 sm:mb-6 tracking-tight">Muro de Lectores</h1>
+            <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+                Comparte tu experiencia y únete a la <span class="highlight-marker">conversación</span> sobre innovación...
+            </p>
+        </header>
 
-            <section class="bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 mb-20 max-w-3xl mx-auto relative z-10">
-                <h3 class="text-2xl font-serif font-bold text-primary mb-8 text-center">Deja tu testimonio</h3>
-                <form id="comment-form" class="flex flex-col gap-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex flex-col gap-2">
-                            <label class="text-xs font-bold text-primary uppercase tracking-widest ml-2">Nombre Completo</label>
-                            <input type="text" id="comment-name" placeholder="Ej. Juan Perez" required 
-                                class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-base focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <label class="text-xs font-bold text-primary uppercase tracking-widest ml-2">Tu Rol o Empresa</label>
-                            <input type="text" id="comment-role" placeholder="Ej. Estudiante de Software" required 
-                                class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-base focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
-                        </div>
+        <!-- ── Comment form ── -->
+        <section class="bg-white p-6 sm:p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 mb-16 sm:mb-20 max-w-3xl mx-auto relative z-10">
+            <h3 class="text-xl sm:text-2xl font-serif font-bold text-primary mb-6 sm:mb-8 text-center">Deja tu testimonio</h3>
+            
+            <form id="comment-form" class="flex flex-col gap-5 sm:gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-xs font-bold text-primary uppercase tracking-widest ml-1 sm:ml-2">Nombre Completo</label>
+                        <input type="text" id="comment-name" placeholder="Ej. Juan Perez" required 
+                            class="p-3.5 sm:p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm sm:text-base focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-xs font-bold text-primary uppercase tracking-widest ml-2">Tu Opinión</label>
-                        <textarea id="comment-text" rows="4" placeholder="¿Qué impacto tuvo este libro en ti o en tu equipo?" required 
-                            class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-base focus:border-secondary focus:ring-1 focus:ring-secondary outline-none resize-none transition-all"></textarea>
+                        <label class="text-xs font-bold text-primary uppercase tracking-widest ml-1 sm:ml-2">Tu Rol o Empresa</label>
+                        <input type="text" id="comment-role" placeholder="Ej. Estudiante de Software" required 
+                            class="p-3.5 sm:p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm sm:text-base focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
                     </div>
-                    
-                    <button type="submit" class="mt-2 bg-primary text-white font-bold py-5 rounded-xl uppercase tracking-[0.2em] text-sm hover:bg-secondary hover:-translate-y-1 transition-all duration-300 shadow-lg">
-                        Publicar mi Comentario
-                    </button>
-                </form>
-            </section>
-
-            <div id="comments-feed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 mt-12 pb-12">
                 </div>
 
-        </main>
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold text-primary uppercase tracking-widest ml-1 sm:ml-2">Tu Opinión</label>
+                    <textarea id="comment-text" rows="4" placeholder="¿Qué impacto tuvo este libro en ti o en tu equipo?" required 
+                        class="p-3.5 sm:p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm sm:text-base focus:border-secondary focus:ring-1 focus:ring-secondary outline-none resize-none transition-all"></textarea>
+                </div>
+                
+                <button type="submit" 
+                        class="mt-1 sm:mt-2 bg-primary text-white font-bold py-4 sm:py-5 rounded-xl uppercase tracking-[0.2em] text-xs sm:text-sm hover:bg-secondary hover:-translate-y-1 transition-all duration-300 shadow-lg w-full">
+                    Publicar mi Comentario
+                </button>
+            </form>
+        </section>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const feed = document.getElementById('comments-feed');
-                const form = document.getElementById('comment-form');
+        <!-- ── Comments feed ── -->
+        <!-- pt-10 gives vertical room for the floating avatar on each card -->
+        <div id="comments-feed" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-16 sm:gap-y-14 mt-10 sm:mt-12 pb-10 sm:pb-12 pt-10">
+        </div>
 
-                // Simulación inicial de testimonios reales
-                let comments = [
-                    { name: "Carlos M.", role: "Fundador de Startup Tech", text: "El mindset innovador no es solo un libro, es una sacudida mental. Directo al grano y sin teoría aburrida. Nos ayudó a destrabar el desarrollo de nuestro último prototipo." },
-                    { name: "Laura G.", role: "Profesora Universitaria", text: "Como docente, siempre busco formas de enseñar a mis alumnos a pensar fuera de la caja. Estas frases son oro puro para iniciar debates en clase." },
-                    { name: "Roberto V.", role: "Director de Operaciones", text: "La innovación suele venderse como algo inalcanzable. Este ebook la desmitifica y te da herramientas para aplicarla hoy mismo. Altamente recomendado para equipos directivos que están estancados en la rutina." },
-                    { name: "Ana S.", role: "Desarrolladora Frontend", text: "Me encantó el enfoque práctico. A veces como programadores nos cerramos al código, pero el pilar de 'La Semilla' me hizo replantear cómo veo los problemas de los usuarios." }
-                ];
+    </main>
 
-                function renderComments() {
-                    feed.innerHTML = '';
-                    comments.forEach(c => {
-                        // Obtenemos la primera letra del nombre para el Avatar
-                        const initial = c.name.charAt(0).toUpperCase();
+    <!-- ══════════════ JS: comments logic (unchanged) ══════════════ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const feed = document.getElementById('comments-feed');
+            const form = document.getElementById('comment-form');
 
-                        feed.innerHTML += `
-                            <div class="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] relative flex flex-col h-full hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500 group">
+            let comments = [
+                { name: "Carlos M.",  role: "Fundador de Startup Tech",    text: "El mindset innovador no es solo un libro, es una sacudida mental. Directo al grano y sin teoría aburrida. Nos ayudó a destrabar el desarrollo de nuestro último prototipo." },
+                { name: "Laura G.",   role: "Profesora Universitaria",      text: "Como docente, siempre busco formas de enseñar a mis alumnos a pensar fuera de la caja. Estas frases son oro puro para iniciar debates en clase." },
+                { name: "Roberto V.", role: "Director de Operaciones",      text: "La innovación suele venderse como algo inalcanzable. Este ebook la desmitifica y te da herramientas para aplicarla hoy mismo. Altamente recomendado para equipos directivos que están estancados en la rutina." },
+                { name: "Ana S.",     role: "Desarrolladora Frontend",      text: "Me encantó el enfoque práctico. A veces como programadores nos cerramos al código, pero el pilar de 'La Semilla' me hizo replantear cómo veo los problemas de los usuarios." }
+            ];
+
+            function renderComments() {
+                feed.innerHTML = '';
+                comments.forEach(c => {
+                    const initial = c.name.charAt(0).toUpperCase();
+                    feed.innerHTML += `
+                        <div class="testimony-card bg-white px-6 pb-8 sm:px-8 sm:pb-10 rounded-3xl border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] relative flex flex-col hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500 group">
+                            
+                            <div class="absolute -top-8 left-6 sm:left-8 w-14 h-14 sm:w-16 sm:h-16 bg-secondary text-white rounded-full flex items-center justify-center font-serif font-black text-xl sm:text-2xl border-4 border-bgmain shadow-md group-hover:scale-110 transition-transform z-20">
+                                ${initial}
+                            </div>
+
+                            <span class="absolute top-4 right-4 sm:right-6 text-[90px] sm:text-[120px] text-gray-50 font-serif leading-none select-none pointer-events-none z-0 transition-colors group-hover:text-secondary/5">
+                                "
+                            </span>
+
+                            <div class="relative z-10 flex flex-col flex-grow">
+                                <p class="text-gray-700 italic mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg flex-grow">"${c.text}"</p>
                                 
-                                <div class="absolute -top-8 left-8 w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center font-serif font-black text-2xl border-4 border-bgmain shadow-md group-hover:scale-110 transition-transform z-20">
-                                    ${initial}
-                                </div>
-
-                                <span class="absolute top-4 right-6 text-[120px] text-gray-50 font-serif leading-none select-none pointer-events-none z-0 transition-colors group-hover:text-secondary/5">
-                                    "
-                                </span>
-
-                                <div class="relative z-10 pt-4 flex flex-col flex-grow">
-                                    <p class="text-gray-700 italic mb-8 leading-relaxed text-lg flex-grow">"${c.text}"</p>
-                                    
-                                    <div class="border-t border-gray-100 pt-5 mt-auto">
-                                        <p class="font-bold text-primary font-serif text-xl">${c.name}</p>
-                                        <p class="text-[10px] text-secondary uppercase tracking-[0.2em] font-bold mt-1">${c.role}</p>
-                                    </div>
+                                <div class="border-t border-gray-100 pt-4 sm:pt-5 mt-auto">
+                                    <p class="font-bold text-primary font-serif text-lg sm:text-xl">${c.name}</p>
+                                    <p class="text-[10px] text-secondary uppercase tracking-[0.2em] font-bold mt-1">${c.role}</p>
                                 </div>
                             </div>
-                        `;
-                    });
-                }
+                        </div>
+                    `;
+                });
+            }
 
-                form.onsubmit = (e) => {
-                    e.preventDefault();
-                    const newComment = {
-                        name: document.getElementById('comment-name').value,
-                        role: document.getElementById('comment-role').value,
-                        text: document.getElementById('comment-text').value
-                    };
-                    
-                    comments.unshift(newComment);
-                    renderComments();
-                    
-                    alert(`¡Gracias ${newComment.name}! Tu testimonio se ha publicado correctamente.`);
-                    form.reset();
+            form.onsubmit = (e) => {
+                e.preventDefault();
+                const newComment = {
+                    name: document.getElementById('comment-name').value,
+                    role: document.getElementById('comment-role').value,
+                    text: document.getElementById('comment-text').value
                 };
-
+                comments.unshift(newComment);
                 renderComments();
-            });
-        </script>
-        <section class="relative py-24 overflow-hidden reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
-    <div class="absolute inset-0 bg-primary z-0"></div>
-    <div class="absolute inset-0 opacity-10 bg-pattern z-10"></div>
-    <div class="absolute top-0 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
-    <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
-
-    <div class="max-w-4xl mx-auto px-6 relative z-20 text-center">
-        <span class="inline-block text-secondary font-bold text-sm uppercase tracking-[4px] mb-6">El siguiente paso</span>
-        
-        <h2 class="text-4xl md:text-6xl font-serif font-black text-white mb-8 leading-tight">
-            ¿Listo para llevar tu <br> 
-            <span class="relative inline-block">
-                <span class="relative z-10">mentalidad</span>
-                <span class="absolute bottom-2 left-0 w-full h-4 bg-secondary/30 -rotate-1 z-0"></span>
-            </span> 
-            al siguiente nivel?
-        </h2>
-        
-        <p class="text-white/70 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-            Únete a los líderes y emprendedores que ya están aplicando el <strong class="text-white">Mindset Innovador</strong> para transformar sus ideas en realidades.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a href="index.html" class="group relative px-10 py-5 bg-secondary text-white font-bold rounded-xl uppercase tracking-widest text-sm shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                <span class="relative z-10">Descargar Ebook Gratis</span>
-                <div class="absolute inset-0 bg-white/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-            </a>
-            
-            <a href="gamificacion.html" class="px-10 py-5 border-2 border-white/20 text-white font-bold rounded-xl uppercase tracking-widest text-sm hover:bg-white/5 transition-all">
-                Probar el Desafío
-            </a>
-        </div>
-        
-        <p class="mt-12 text-white/40 text-xs font-medium flex items-center justify-center gap-2">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            Más de 30 años de experiencia condensados en una guía práctica.
-        </p>
-    </div>
-    </section>
-        <footer class="bg-primary text-white/70 py-12 border-t-4 border-secondary mt-auto">
-                <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                    
-                    <div>
-                        <h3 class="text-xl font-bold text-white mb-3">El Mindset Innovador</h3>
-                        <p class="text-sm leading-relaxed">
-                            Desmitificando la innovación para líderes, docentes y emprendedores que se atreven a pensar diferente.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Navegación</h4>
-                        <ul class="flex flex-col gap-2 text-sm">
-                            <li><a href="index.html" class="hover:text-secondary transition-colors">Inicio (Descargar Libro)</a></li>
-                            <li><a href="el-libro.html" class="hover:text-secondary transition-colors">El Libro</a></li>
-                            <li><a href="about.html" class="hover:text-secondary transition-colors">Acerca del Autor</a></li>
-                            <li><a href="testimonios.html" class="hover:text-secondary transition-colors">Testimonios</a></li>
-                            <li><a href="gamificacion.html" class="hover:text-secondary transition-colors font-bold text-secondary">Desafío ADN Innovador</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Conecta con Jesús</h4>
-                        <ul class="flex flex-col gap-2 text-sm mb-6">
-                            <li><a href="https://jesusgaxiola.com" target="_blank" class="hover:text-secondary transition-colors">jesusgaxiola.com</a></li>
-                            <li><a href="https://x.com/jesusgaxiola" target="_blank" class="hover:text-secondary transition-colors">X (Twitter) @jesusgaxiola</a></li>
-                            <li><a href="https://linkedin.com/in/jesusgaxiola/" target="_blank" class="hover:text-secondary transition-colors">LinkedIn /jesusgaxiola</a></li>
-                        </ul>
-
-                        <a href="#" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-lg font-bold text-sm shadow-md hover:bg-[#ffea4d] hover:-translate-y-1 transition-all w-fit">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4v-2z"/>
-                            </svg>
-                            Invítame un café
-                        </a>
-                    </div>
-                    
-                </div>
-
-                <div class="max-w-4xl mx-auto px-6 mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/50">
-                    <p>&copy; 2026 Jesús A. Gaxiola. Todos los derechos reservados. Impulsando el ecosistema YaquiValley.</p>
-                </div>
-        </footer>
-
-        <script>
-            window.addEventListener('scroll', () => {
-                const nav = document.getElementById('smart-nav');
-                if (window.scrollY > 50) {
-                    nav.classList.remove('py-6', 'bg-primary');
-                    nav.classList.add('py-3', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
-                } else {
-                    nav.classList.add('py-6', 'bg-primary');
-                    nav.classList.remove('py-3', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
-                }
-            });
-        </script>
-        <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.15, 
-                rootMargin: "0px 0px -50px 0px"
+                alert(`¡Gracias ${newComment.name}! Tu testimonio se ha publicado correctamente.`);
+                form.reset();
             };
 
+            renderComments();
+        });
+    </script>
+
+    <!-- ══════════════ CTA SECTION ══════════════ -->
+    <section class="relative py-16 sm:py-24 overflow-hidden reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+        <div class="absolute inset-0 bg-primary z-0"></div>
+        <div class="absolute inset-0 opacity-10 bg-pattern z-10"></div>
+        <div class="absolute top-0 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-secondary/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-secondary/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-20 text-center">
+            <span class="inline-block text-secondary font-bold text-xs sm:text-sm uppercase tracking-[3px] sm:tracking-[4px] mb-4 sm:mb-6">El siguiente paso</span>
+            
+            <h2 class="text-3xl sm:text-4xl md:text-6xl font-serif font-black text-white mb-6 sm:mb-8 leading-tight">
+                ¿Listo para llevar tu <br> 
+                <span class="relative inline-block">
+                    <span class="relative z-10">mentalidad</span>
+                    <span class="absolute bottom-2 left-0 w-full h-4 bg-secondary/30 -rotate-1 z-0"></span>
+                </span> 
+                al siguiente nivel?
+            </h2>
+            
+            <p class="text-white/70 text-base sm:text-lg md:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
+                Únete a los líderes y emprendedores que ya están aplicando el <strong class="text-white">Mindset Innovador</strong> para transformar sus ideas en realidades.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+                <a href="index.html" 
+                   class="group relative px-8 sm:px-10 py-4 sm:py-5 bg-secondary text-white font-bold rounded-xl uppercase tracking-widest text-xs sm:text-sm shadow-2xl hover:-translate-y-2 transition-all duration-300 w-full sm:w-auto text-center">
+                    <span class="relative z-10">Descargar Ebook Gratis</span>
+                    <div class="absolute inset-0 bg-white/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                </a>
+                <a href="gamificacion.html" 
+                   class="px-8 sm:px-10 py-4 sm:py-5 border-2 border-white/20 text-white font-bold rounded-xl uppercase tracking-widest text-xs sm:text-sm hover:bg-white/5 transition-all w-full sm:w-auto text-center">
+                    Probar el Desafío
+                </a>
+            </div>
+            
+            <p class="mt-8 sm:mt-12 text-white/40 text-xs font-medium flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                Más de 30 años de experiencia condensados en una guía práctica.
+            </p>
+        </div>
+    </section>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="bg-primary text-white/70 py-10 sm:py-12 border-t-4 border-secondary mt-auto">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
+            <div>
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-3">El Mindset Innovador</h3>
+                <p class="text-sm leading-relaxed">Desmitificando la innovación para líderes, docentes y emprendedores que se atreven a pensar diferente.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Navegación</h4>
+                <ul class="flex flex-col gap-2 text-sm">
+                    <li><a href="index.html"        class="hover:text-secondary transition-colors">Inicio (Descargar Libro)</a></li>
+                    <li><a href="el-libro.html"     class="hover:text-secondary transition-colors">El Libro</a></li>
+                    <li><a href="about.html"        class="hover:text-secondary transition-colors">Acerca del Autor</a></li>
+                    <li><a href="testimonios.html"  class="hover:text-secondary transition-colors">Testimonios</a></li>
+                    <li><a href="gamificacion.html" class="hover:text-secondary transition-colors font-bold text-secondary">Desafío ADN Innovador</a></li>
+                </ul>
+            </div>
+            <div class="sm:col-span-2 md:col-span-1">
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Conecta con Jesús</h4>
+                <ul class="flex flex-col gap-2 text-sm mb-5">
+                    <li><a href="https://jesusgaxiola.com"              target="_blank" class="hover:text-secondary transition-colors">jesusgaxiola.com</a></li>
+                    <li><a href="https://x.com/jesusgaxiola"            target="_blank" class="hover:text-secondary transition-colors">X (Twitter) @jesusgaxiola</a></li>
+                    <li><a href="https://linkedin.com/in/jesusgaxiola/" target="_blank" class="hover:text-secondary transition-colors">LinkedIn /jesusgaxiola</a></li>
+                </ul>
+                <a href="#" target="_blank" 
+                   class="inline-flex items-center justify-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-lg font-bold text-sm shadow-md hover:bg-[#ffea4d] hover:-translate-y-1 transition-all w-fit">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4v-2z"/>
+                    </svg>
+                    Invítame un café
+                </a>
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/50">
+            <p>&copy; 2026 Jesús A. Gaxiola. Todos los derechos reservados. Impulsando el ecosistema YaquiValley.</p>
+        </div>
+    </footer>
+
+    <!-- ══════════════ SCRIPTS ══════════════ -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('smart-nav');
+            if (window.scrollY > 50) {
+                nav.classList.remove('py-4', 'bg-primary');
+                nav.classList.add('py-2', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                nav.classList.add('py-4', 'bg-primary');
+                nav.classList.remove('py-2', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Remueve las clases ocultas y añade las de estado final
                         entry.target.classList.remove('opacity-0', 'translate-y-12');
                         entry.target.classList.add('opacity-100', 'translate-y-0');
                         observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
-            document.querySelectorAll('.reveal-item').forEach((el) => {
-                observer.observe(el);
-            });
+            document.querySelectorAll('.reveal-item').forEach((el) => observer.observe(el));
         });
     </script>
-    </body>
+
+</body>
 </html>

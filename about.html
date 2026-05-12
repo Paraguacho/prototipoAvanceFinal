@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>El Mindset Innovador | Frases</title>
-        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mindset Innovador | Frases</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
@@ -24,7 +23,7 @@
             },
             fontFamily: {
               sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-              serif: ['"Playfair Display"', 'Georgia', 'serif'], /* NUEVA FUENTE SERIF */
+              serif: ['"Playfair Display"', 'Georgia', 'serif'],
             }
           }
         }
@@ -32,86 +31,148 @@
     </script>
 
     <style>
+        /* ── Highlight marker ── */
         .highlight-marker {
-        position: relative;
-        display: inline-block;
-        white-space: nowrap;
-    }
-    .highlight-marker::after {
-        content: "";
-        position: absolute;
-        bottom: 2px;
-        left: 0;
-        width: 100%;
-        height: 12px;
-        background-color: rgba(184, 159, 113, 0.35); /* Color secondary con opacidad */
-        transform: rotate(-1deg);
-        z-index: -1;
-        border-radius: 2px;
-    }
-      .bg-pattern {
-        background-color: #f8f9fa;
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232c3e50' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        background-size:80px 80px;
-        background-attachment:fixed;
-    }
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .highlight-marker::after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background-color: rgba(184, 159, 113, 0.35);
+            transform: rotate(-1deg);
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        /* ── Background pattern ── */
+        .bg-pattern {
+            background-color: #f8f9fa;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232c3e50' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 80px 80px;
+            background-attachment: fixed;
+        }
+
+        /* ── Mobile nav: horizontal scroll ── */
+        @media (max-width: 639px) {
+            #smart-nav .nav-list {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                flex-wrap: nowrap;
+                gap: 0.5rem;
+                padding-bottom: 4px;
+            }
+            #smart-nav .nav-list::-webkit-scrollbar { display: none; }
+            #smart-nav .nav-list li a {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.7rem;
+                white-space: nowrap;
+            }
+        }
+
+        /* ── Timeline line: left-only on mobile ── */
+        .timeline-line {
+            left: 0;
+            transform: none;
+        }
+        @media (min-width: 768px) {
+            .timeline-line {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── Timeline dot: always on left on mobile ── */
+        .timeline-dot {
+            left: -7px;
+        }
+        @media (min-width: 768px) {
+            .timeline-dot {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── Prevent horizontal overflow ── */
+        html, body { overflow-x: hidden; }
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
-    <body class="bg-pattern text-gray-800 flex flex-col min-h-screen">
+<body class="bg-pattern text-gray-800 flex flex-col min-h-screen">
 
-        <nav id="smart-nav" class="sticky top-0 z-50 bg-primary transition-all duration-500 py-6">
-            <div class="max-w-4xl mx-auto px-6">
-                <ul class="flex flex-wrap gap-4 sm:gap-6 list-none m-0 p-0">
-                    <li><a href="index.html" class="text-white/60 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Inicio</a></li>
-                    <li><a href="el-libro.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">El Libro</a></li>
-                    <li><a href="about.html" class="text-white bg-white/10 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Acerca del Autor</a></li>
-                    <li><a href="testimonios.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Testimonios</a></li>
-                    <li><a href="gamificacion.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Desafío</a></li>
-                </ul>
-            </div>
-        </nav>
+    <!-- ══════════════ NAV ══════════════ -->
+    <nav id="smart-nav" class="sticky top-0 z-50 bg-primary transition-all duration-500 py-4 sm:py-6">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <ul class="nav-list flex list-none m-0 p-0 gap-2 sm:gap-6 sm:flex-wrap">
+                <li><a href="index.html"        class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Inicio</a></li>
+                <li><a href="el-libro.html"     class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">El Libro</a></li>
+                <li><a href="about.html"        class="text-white bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Autor</a></li>
+                <li><a href="testimonios.html"  class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Testimonios</a></li>
+                <li><a href="gamificacion.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Desafío</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <main class="max-w-6xl mx-auto px-6 py-16 flex-grow">
+    <!-- ══════════════ MAIN ══════════════ -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 flex-grow w-full">
         
-        <section class="relative grid grid-cols-1 md:grid-cols-12 gap-12 items-center mb-32">
-            <span class="absolute -top-10 -left-10 text-[120px] md:text-[200px] font-serif font-black text-primary/[0.03] select-none pointer-events-none z-0">
+        <!-- ── Hero / Profile ── -->
+        <section class="relative grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center mb-16 sm:mb-32">
+            <!-- Decorative text — smaller on mobile -->
+            <span class="absolute -top-6 -left-2 sm:-top-10 sm:-left-10 text-[70px] sm:text-[120px] md:text-[200px] font-serif font-black text-primary/[0.03] select-none pointer-events-none z-0 leading-none">
                 PERFIL
             </span>
 
-            <div class="md:col-span-5 relative z-10">
+            <!-- Photo -->
+            <div class="md:col-span-5 relative z-10 max-w-xs mx-auto md:max-w-none w-full">
                 <div class="relative group">
-                    <div class="absolute -bottom-6 -right-6 w-full h-full border-2 border-secondary/30 rounded-2xl z-0 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
+                    <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-full h-full border-2 border-secondary/30 rounded-2xl z-0 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
                     
                     <img src="src/jesus-gaxiola.jpg" alt="Jesús Antonio Gaxiola" 
                         class="w-full aspect-[4/5] object-cover rounded-2xl shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700">
                     
-                    <div class="absolute -top-4 -left-4 bg-primary text-white p-4 rounded-lg shadow-xl z-20 hidden md:block">
+                    <!-- Badge — hidden on mobile to avoid overflow, shown sm+ -->
+                    <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 bg-primary text-white p-3 sm:p-4 rounded-lg shadow-xl z-20 hidden sm:block">
+                        <p class="text-xs font-bold uppercase tracking-widest text-secondary">Fundador</p>
+                        <p class="text-sm font-serif italic">Yaqui Valley</p>
+                    </div>
+                </div>
+                <!-- Badge inline for mobile -->
+                <div class="sm:hidden mt-4 bg-primary text-white px-4 py-2.5 rounded-lg shadow-xl inline-flex items-center gap-3">
+                    <div>
                         <p class="text-xs font-bold uppercase tracking-widest text-secondary">Fundador</p>
                         <p class="text-sm font-serif italic">Yaqui Valley</p>
                     </div>
                 </div>
             </div>
 
+            <!-- Bio -->
             <div class="md:col-span-7 relative z-10">
-                <span class="inline-block text-secondary font-bold text-sm uppercase tracking-[3px] mb-4">Sobre el Autor</span>
-                <h1 class="text-4xl md:text-6xl font-serif font-black text-primary leading-tight mb-8">
+                <span class="inline-block text-secondary font-bold text-xs sm:text-sm uppercase tracking-[3px] mb-3 sm:mb-4">Sobre el Autor</span>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-serif font-black text-primary leading-tight mb-5 sm:mb-8">
                     Jesús Antonio <br> <span class="text-secondary">Gaxiola</span> Meléndrez
                 </h1>
                 
-                <div class="space-y-6">
-                    <p class="text-2xl md:text-3xl font-serif italic text-primary leading-relaxed border-l-4 border-secondary pl-6 py-2 bg-secondary/5 rounded-r-xl">
+                <div class="space-y-4 sm:space-y-6">
+                    <p class="text-lg sm:text-2xl md:text-3xl font-serif italic text-primary leading-relaxed border-l-4 border-secondary pl-4 sm:pl-6 py-2 bg-secondary/5 rounded-r-xl">
                         "Mentor de startups, organizador de StartupWeekend, y socio fundador de SahuroLabs.com y Yaquivalley.mx."
                     </p>
-                    <p class="text-lg text-gray-600 leading-relaxed">
+                    <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
                         Maestro universitario por 30 años en ITSON. Apoyo a profesores a innovar en el aula y a empresas con la creación de modelos de negocios, especialmente Startups. Me apasiona el Design Thinking y el desarrollo de ecosistemas de innovación regional.
                     </p>
                     
-                    <div class="flex gap-6 pt-4 text-lg">
-                        <a href="https://www.jesusgaxiola.com" target="_blank" class="flex items-center gap-2 text-primary font-bold hover:text-secondary transition-colors">
-                            <span class="w-8 h-[2px] bg-secondary"></span> jesusgaxiola.com
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 pt-2 sm:pt-4 text-base sm:text-lg">
+                        <a href="https://www.jesusgaxiola.com" target="_blank" 
+                           class="flex items-center gap-2 text-primary font-bold hover:text-secondary transition-colors">
+                            <span class="w-6 sm:w-8 h-[2px] bg-secondary flex-shrink-0"></span> jesusgaxiola.com
                         </a>
                         <p class="text-muted font-medium">@jesusgaxiola</p>
                     </div>
@@ -119,52 +180,62 @@
             </div>
         </section>
 
-        <section class="mb-32">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-serif font-black text-primary">Educación y Experiencia</h2>
-                <div class="w-24 h-1.5 bg-secondary mx-auto mt-6 rounded-full"></div>
+        <!-- ── Timeline ── -->
+        <section class="mb-16 sm:mb-32">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-primary">Educación y Experiencia</h2>
+                <div class="w-24 h-1.5 bg-secondary mx-auto mt-4 sm:mt-6 rounded-full"></div>
             </div>
 
-            <div class="max-w-4xl mx-auto relative">
-                <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-[2px] bg-gray-200"></div>
+            <!-- Timeline container — left-aligned on mobile, centered on desktop -->
+            <div class="max-w-4xl mx-auto relative pl-6 md:pl-0">
+                <!-- Vertical line -->
+                <div class="timeline-line absolute top-0 bottom-0 w-[2px] bg-gray-200"></div>
 
-                <div class="space-y-16">
+                <div class="space-y-10 sm:space-y-16">
                     
-                    <div class="relative flex flex-col md:flex-row items-center group">
+                    <!-- Item 1: left side on desktop -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center group">
+                        <!-- Desktop label (right of left column) -->
                         <div class="hidden md:block w-1/2 pr-16 text-right">
                             <span class="text-sm font-bold text-secondary uppercase tracking-[0.2em]">Postgrado</span>
                         </div>
-                        <div class="absolute left-[-7px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-bgmain shadow-md group-hover:scale-150 transition-transform duration-300 z-10"></div>
-                        
-                        <div class="w-full md:w-1/2 pl-10 md:pl-16">
-                            <h4 class="font-serif font-bold text-2xl text-primary mb-2">Maestría en Administración de Negocios</h4>
-                            <p class="text-base text-muted font-medium">ITSON</p>
+                        <!-- Dot -->
+                        <div class="timeline-dot absolute w-4 h-4 bg-secondary rounded-full border-4 border-bgmain shadow-md group-hover:scale-150 transition-transform duration-300 z-10 top-1 md:top-auto"></div>
+                        <!-- Content -->
+                        <div class="w-full md:w-1/2 md:pl-16">
+                            <!-- Mobile label -->
+                            <span class="md:hidden text-xs font-bold text-secondary uppercase tracking-[0.2em] block mb-1">Postgrado</span>
+                            <h4 class="font-serif font-bold text-lg sm:text-2xl text-primary mb-1 sm:mb-2">Maestría en Administración de Negocios</h4>
+                            <p class="text-sm sm:text-base text-muted font-medium">ITSON</p>
                         </div>
                     </div>
 
-                    <div class="relative flex flex-col md:flex-row-reverse items-center group">
+                    <!-- Item 2: right side on desktop -->
+                    <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center group">
                         <div class="hidden md:block w-1/2 pl-16 text-left">
                             <span class="text-sm font-bold text-secondary uppercase tracking-[0.2em]">Formación</span>
                         </div>
-                        <div class="absolute left-[-7px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-bgmain shadow-md group-hover:scale-150 transition-transform duration-300 z-10"></div>
-                        
-                        <div class="w-full md:w-1/2 pr-0 md:pr-16 md:text-right pl-10 md:pl-0">
-                            <p class="text-sm text-secondary font-bold mb-6">
+                        <div class="timeline-dot absolute w-4 h-4 bg-secondary rounded-full border-4 border-bgmain shadow-md group-hover:scale-150 transition-transform duration-300 z-10 top-1 md:top-auto"></div>
+                        <div class="w-full md:w-1/2 md:pr-16 md:text-right">
+                            <span class="md:hidden text-xs font-bold text-secondary uppercase tracking-[0.2em] block mb-1">Formación</span>
+                            <p class="text-xs sm:text-sm text-secondary font-bold mb-2 sm:mb-6">
                                 Ingeniero Industrial y de Sistemas e <span class="highlight-marker">impulsor</span> del YaquiValley
                             </p>
-                            <p class="text-base text-muted font-medium">ITSON</p>
+                            <p class="text-sm sm:text-base text-muted font-medium">ITSON</p>
                         </div>
                     </div>
 
-                    <div class="relative flex flex-col md:flex-row items-center group">
+                    <!-- Item 3: left side on desktop -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center group">
                         <div class="hidden md:block w-1/2 pr-16 text-right">
                             <span class="text-sm font-bold text-secondary uppercase tracking-[0.2em]">Fundaciones</span>
                         </div>
-                        <div class="absolute left-[-7px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-bgmain shadow-md group-hover:scale-150 transition-transform duration-300 z-10"></div>
-                        
-                        <div class="w-full md:w-1/2 pl-10 md:pl-16">
-                            <h4 class="font-serif font-bold text-2xl text-primary mb-2">SahuaroLabs & Be-Social Media</h4>
-                            <p class="text-base text-muted font-medium">Socio Fundador</p>
+                        <div class="timeline-dot absolute w-4 h-4 bg-secondary rounded-full border-4 border-bgmain shadow-md group-hover:scale-150 transition-transform duration-300 z-10 top-1 md:top-auto"></div>
+                        <div class="w-full md:w-1/2 md:pl-16">
+                            <span class="md:hidden text-xs font-bold text-secondary uppercase tracking-[0.2em] block mb-1">Fundaciones</span>
+                            <h4 class="font-serif font-bold text-lg sm:text-2xl text-primary mb-1 sm:mb-2">SahuaroLabs & Be-Social Media</h4>
+                            <p class="text-sm sm:text-base text-muted font-medium">Socio Fundador</p>
                         </div>
                     </div>
 
@@ -172,26 +243,29 @@
             </div>
         </section>
 
-        <section class="pt-20 border-t border-gray-200">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <!-- ── Other publications ── -->
+        <section class="pt-12 sm:pt-20 border-t border-gray-200">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
                 <div>
-                    <h3 class="text-3xl font-serif font-black text-primary">Otras Publicaciones</h3>
-                    <p class="text-muted mt-2">Explora el ecosistema de conocimiento del autor.</p>
+                    <h3 class="text-2xl sm:text-3xl font-serif font-black text-primary">Otras Publicaciones</h3>
+                    <p class="text-muted mt-1 sm:mt-2 text-sm sm:text-base">Explora el ecosistema de conocimiento del autor.</p>
                 </div>
-                <a href="index.html" class="bg-secondary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest shadow-xl hover:-translate-y-1 transition-all">
+                <a href="index.html" 
+                   class="w-full sm:w-auto text-center bg-secondary text-white px-6 sm:px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest shadow-xl hover:-translate-y-1 transition-all">
                     Descargar Ebook Principal
                 </a>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10">
+                
                 <div class="group">
                     <div class="bg-white rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all duration-500 transform group-hover:-translate-y-4">
-                        <div class="h-72 bg-gray-50 flex items-center justify-center p-6 border-b border-gray-100">
+                        <div class="h-52 sm:h-72 bg-gray-50 flex items-center justify-center p-4 sm:p-6 border-b border-gray-100">
                             <img src="src/10terminos.jpg" alt="10 Términos" class="h-full w-auto object-contain shadow-lg rotate-2 group-hover:rotate-0 transition-transform">
                         </div>
-                        <div class="p-6">
-                            <h4 class="font-serif font-bold text-primary mb-2">La innovación tambien se gestiona</h4>
-                            <p class="text-xs text-muted leading-relaxed mb-4">Guía práctica para el desarrollo de startups y modelos rentables.</p>
+                        <div class="p-4 sm:p-6">
+                            <h4 class="font-serif font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">La innovación tambien se gestiona</h4>
+                            <p class="text-xs text-muted leading-relaxed mb-3 sm:mb-4">Guía práctica para el desarrollo de startups y modelos rentables.</p>
                             <span class="text-[10px] font-bold text-secondary uppercase tracking-[2px]">Próximamente</span>
                         </div>
                     </div>
@@ -199,12 +273,12 @@
 
                 <div class="group">
                     <div class="bg-white rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all duration-500 transform group-hover:-translate-y-4">
-                        <div class="h-72 bg-gray-50 flex items-center justify-center p-6 border-b border-gray-100">
+                        <div class="h-52 sm:h-72 bg-gray-50 flex items-center justify-center p-4 sm:p-6 border-b border-gray-100">
                             <img src="src/experiencias-aprendizaje.jpg" alt="Webinar Aprendizaje" class="h-full w-auto object-contain shadow-lg -rotate-2 group-hover:rotate-0 transition-transform">
                         </div>
-                        <div class="p-6">
-                            <h4 class="font-serif font-bold text-primary mb-2">Transformación Digital para empresas</h4>
-                            <p class="text-xs text-muted leading-relaxed mb-4">Design Thinking aplicado a la educación y entornos corporativos.</p>
+                        <div class="p-4 sm:p-6">
+                            <h4 class="font-serif font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">Transformación Digital para empresas</h4>
+                            <p class="text-xs text-muted leading-relaxed mb-3 sm:mb-4">Design Thinking aplicado a la educación y entornos corporativos.</p>
                             <span class="text-[10px] font-bold text-secondary uppercase tracking-[2px]">Próximamente</span>
                         </div>
                     </div>
@@ -212,139 +286,133 @@
 
                 <div class="group">
                     <div class="bg-white rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all duration-500 transform group-hover:-translate-y-4">
-                        <div class="h-72 bg-gray-50 flex items-center justify-center p-6 border-b border-gray-100">
+                        <div class="h-52 sm:h-72 bg-gray-50 flex items-center justify-center p-4 sm:p-6 border-b border-gray-100">
                             <img src="src/estrategias-crisis.jpg" alt="Estrategias Crisis" class="h-full w-auto object-contain shadow-lg rotate-1 group-hover:rotate-0 transition-transform">
                         </div>
-                        <div class="p-6">
-                            <h4 class="font-serif font-bold text-primary mb-2">Administración por Objetivos de Negocio</h4>
-                            <p class="text-xs text-muted leading-relaxed mb-4">Posicionamiento de ecosistemas de innovación en tiempos difíciles.</p>
+                        <div class="p-4 sm:p-6">
+                            <h4 class="font-serif font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">Administración por Objetivos de Negocio</h4>
+                            <p class="text-xs text-muted leading-relaxed mb-3 sm:mb-4">Posicionamiento de ecosistemas de innovación en tiempos difíciles.</p>
                             <span class="text-[10px] font-bold text-secondary uppercase tracking-[2px]">Próximamente</span>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
     </main>
 
+    <!-- ══════════════ CTA SECTION ══════════════ -->
+    <section class="relative py-16 sm:py-24 overflow-hidden reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+        <div class="absolute inset-0 bg-primary z-0"></div>
+        <div class="absolute inset-0 opacity-10 bg-pattern z-10"></div>
+        <div class="absolute top-0 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-secondary/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-secondary/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
 
-        <section class="relative py-24 overflow-hidden reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
-    <div class="absolute inset-0 bg-primary z-0"></div>
-    <div class="absolute inset-0 opacity-10 bg-pattern z-10"></div>
-    <div class="absolute top-0 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
-    <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
-
-    <div class="max-w-4xl mx-auto px-6 relative z-20 text-center">
-        <span class="inline-block text-secondary font-bold text-sm uppercase tracking-[4px] mb-6">El siguiente paso</span>
-        
-        <h2 class="text-4xl md:text-6xl font-serif font-black text-white mb-8 leading-tight">
-            ¿Listo para llevar tu <br> 
-            <span class="relative inline-block">
-                <span class="relative z-10">mentalidad</span>
-                <span class="absolute bottom-2 left-0 w-full h-4 bg-secondary/30 -rotate-1 z-0"></span>
-            </span> 
-            al siguiente nivel?
-        </h2>
-        
-        <p class="text-white/70 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-            Únete a los líderes y emprendedores que ya están aplicando el <strong class="text-white">Mindset Innovador</strong> para transformar sus ideas en realidades.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a href="index.html" class="group relative px-10 py-5 bg-secondary text-white font-bold rounded-xl uppercase tracking-widest text-sm shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                <span class="relative z-10">Descargar Ebook Gratis</span>
-                <div class="absolute inset-0 bg-white/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-            </a>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-20 text-center">
+            <span class="inline-block text-secondary font-bold text-xs sm:text-sm uppercase tracking-[3px] sm:tracking-[4px] mb-4 sm:mb-6">El siguiente paso</span>
             
-            <a href="gamificacion.html" class="px-10 py-5 border-2 border-white/20 text-white font-bold rounded-xl uppercase tracking-widest text-sm hover:bg-white/5 transition-all">
-                Probar el Desafío
-            </a>
+            <h2 class="text-3xl sm:text-4xl md:text-6xl font-serif font-black text-white mb-6 sm:mb-8 leading-tight">
+                ¿Listo para llevar tu <br> 
+                <span class="relative inline-block">
+                    <span class="relative z-10">mentalidad</span>
+                    <span class="absolute bottom-2 left-0 w-full h-4 bg-secondary/30 -rotate-1 z-0"></span>
+                </span> 
+                al siguiente nivel?
+            </h2>
+            
+            <p class="text-white/70 text-base sm:text-lg md:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
+                Únete a los líderes y emprendedores que ya están aplicando el <strong class="text-white">Mindset Innovador</strong> para transformar sus ideas en realidades.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+                <a href="index.html" 
+                   class="group relative px-8 sm:px-10 py-4 sm:py-5 bg-secondary text-white font-bold rounded-xl uppercase tracking-widest text-xs sm:text-sm shadow-2xl hover:-translate-y-2 transition-all duration-300 w-full sm:w-auto text-center">
+                    <span class="relative z-10">Descargar Ebook Gratis</span>
+                    <div class="absolute inset-0 bg-white/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                </a>
+                <a href="gamificacion.html" 
+                   class="px-8 sm:px-10 py-4 sm:py-5 border-2 border-white/20 text-white font-bold rounded-xl uppercase tracking-widest text-xs sm:text-sm hover:bg-white/5 transition-all w-full sm:w-auto text-center">
+                    Probar el Desafío
+                </a>
+            </div>
+            
+            <p class="mt-8 sm:mt-12 text-white/40 text-xs font-medium flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                Más de 30 años de experiencia condensados en una guía práctica.
+            </p>
         </div>
-        
-        <p class="mt-12 text-white/40 text-xs font-medium flex items-center justify-center gap-2">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            Más de 30 años de experiencia condensados en una guía práctica.
-        </p>
-    </div>
     </section>
-        <footer class="bg-primary text-white/70 py-12 border-t-4 border-secondary mt-auto">
-                <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                    
-                    <div>
-                        <h3 class="text-xl font-bold text-white mb-3">El Mindset Innovador</h3>
-                        <p class="text-sm leading-relaxed">
-                            Desmitificando la innovación para líderes, docentes y emprendedores que se atreven a pensar diferente.
-                        </p>
-                    </div>
 
-                    <div>
-                        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Navegación</h4>
-                        <ul class="flex flex-col gap-2 text-sm">
-                            <li><a href="index.html" class="hover:text-secondary transition-colors">Inicio (Descargar Libro)</a></li>
-                            <li><a href="el-libro.html" class="hover:text-secondary transition-colors">El Libro</a></li>
-                            <li><a href="about.html" class="hover:text-secondary transition-colors">Acerca del Autor</a></li>
-                            <li><a href="testimonios.html" class="hover:text-secondary transition-colors">Testimonios</a></li>
-                            <li><a href="gamificacion.html" class="hover:text-secondary transition-colors font-bold text-secondary">Desafío ADN Innovador</a></li>
-                        </ul>
-                    </div>
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="bg-primary text-white/70 py-10 sm:py-12 border-t-4 border-secondary mt-auto">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
+            <div>
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-3">El Mindset Innovador</h3>
+                <p class="text-sm leading-relaxed">Desmitificando la innovación para líderes, docentes y emprendedores que se atreven a pensar diferente.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Navegación</h4>
+                <ul class="flex flex-col gap-2 text-sm">
+                    <li><a href="index.html"        class="hover:text-secondary transition-colors">Inicio (Descargar Libro)</a></li>
+                    <li><a href="el-libro.html"     class="hover:text-secondary transition-colors">El Libro</a></li>
+                    <li><a href="about.html"        class="hover:text-secondary transition-colors">Acerca del Autor</a></li>
+                    <li><a href="testimonios.html"  class="hover:text-secondary transition-colors">Testimonios</a></li>
+                    <li><a href="gamificacion.html" class="hover:text-secondary transition-colors font-bold text-secondary">Desafío ADN Innovador</a></li>
+                </ul>
+            </div>
+            <div class="sm:col-span-2 md:col-span-1">
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Conecta con Jesús</h4>
+                <ul class="flex flex-col gap-2 text-sm mb-5">
+                    <li><a href="https://jesusgaxiola.com"              target="_blank" class="hover:text-secondary transition-colors">jesusgaxiola.com</a></li>
+                    <li><a href="https://x.com/jesusgaxiola"            target="_blank" class="hover:text-secondary transition-colors">X (Twitter) @jesusgaxiola</a></li>
+                    <li><a href="https://linkedin.com/in/jesusgaxiola/" target="_blank" class="hover:text-secondary transition-colors">LinkedIn /jesusgaxiola</a></li>
+                </ul>
+                <a href="#" target="_blank" 
+                   class="inline-flex items-center justify-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-lg font-bold text-sm shadow-md hover:bg-[#ffea4d] hover:-translate-y-1 transition-all w-fit">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4v-2z"/>
+                    </svg>
+                    Invítame un café
+                </a>
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/50">
+            <p>&copy; 2026 Jesús A. Gaxiola. Todos los derechos reservados. Impulsando el ecosistema YaquiValley.</p>
+        </div>
+    </footer>
 
-                    <div>
-                        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Conecta con Jesús</h4>
-                        <ul class="flex flex-col gap-2 text-sm mb-6">
-                            <li><a href="https://jesusgaxiola.com" target="_blank" class="hover:text-secondary transition-colors">jesusgaxiola.com</a></li>
-                            <li><a href="https://x.com/jesusgaxiola" target="_blank" class="hover:text-secondary transition-colors">X (Twitter) @jesusgaxiola</a></li>
-                            <li><a href="https://linkedin.com/in/jesusgaxiola/" target="_blank" class="hover:text-secondary transition-colors">LinkedIn /jesusgaxiola</a></li>
-                        </ul>
+    <!-- ══════════════ SCRIPTS ══════════════ -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('smart-nav');
+            if (window.scrollY > 50) {
+                nav.classList.remove('py-4', 'bg-primary');
+                nav.classList.add('py-2', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                nav.classList.add('py-4', 'bg-primary');
+                nav.classList.remove('py-2', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+    </script>
 
-                        <a href="#" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-lg font-bold text-sm shadow-md hover:bg-[#ffea4d] hover:-translate-y-1 transition-all w-fit">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4v-2z"/>
-                            </svg>
-                            Invítame un café
-                        </a>
-                    </div>
-                        
-                </div>
-
-                <div class="max-w-4xl mx-auto px-6 mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/50">
-                    <p>&copy; 2026 Jesús A. Gaxiola. Todos los derechos reservados. Impulsando el ecosistema YaquiValley.</p>
-                </div>
-        </footer>
-        <script>
-            window.addEventListener('scroll', () => {
-                const nav = document.getElementById('smart-nav');
-                if (window.scrollY > 50) {
-                    nav.classList.remove('py-6', 'bg-primary');
-                    nav.classList.add('py-3', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
-                } else {
-                    nav.classList.add('py-6', 'bg-primary');
-                    nav.classList.remove('py-3', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
-                }
-            });
-        </script>
-
-        <script>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.15, 
-                rootMargin: "0px 0px -50px 0px"
-            };
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Remueve las clases ocultas y añade las de estado final
                         entry.target.classList.remove('opacity-0', 'translate-y-12');
                         entry.target.classList.add('opacity-100', 'translate-y-0');
                         observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
-            document.querySelectorAll('.reveal-item').forEach((el) => {
-                observer.observe(el);
-            });
+            document.querySelectorAll('.reveal-item').forEach((el) => observer.observe(el));
         });
     </script>
-    </body>
+
+</body>
 </html>
