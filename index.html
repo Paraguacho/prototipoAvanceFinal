@@ -23,7 +23,7 @@
             },
             fontFamily: {
               sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-              serif: ['"Playfair Display"', 'Georgia', 'serif'], /* NUEVA FUENTE SERIF */
+              serif: ['"Playfair Display"', 'Georgia', 'serif'],
             }
           }
         }
@@ -31,6 +31,7 @@
     </script>
 
     <style>
+    /* ── Highlight marker ── */
     .highlight-marker {
         position: relative;
         display: inline-block;
@@ -43,72 +44,104 @@
         left: 0;
         width: 100%;
         height: 12px;
-        background-color: rgba(184, 159, 113, 0.35); /* Color secondary con opacidad */
+        background-color: rgba(184, 159, 113, 0.35);
         transform: rotate(-1deg);
         z-index: -1;
         border-radius: 2px;
     }
-      .bg-pattern {
+
+    /* ── Background pattern ── */
+    .bg-pattern {
         background-color: #f8f9fa;
         background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232c3e50' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        background-size:80px 80px;
-        background-attachment:fixed;
+        background-size: 80px 80px;
+        background-attachment: fixed;
     }
-    </style>
 
-    <style>
-      /* NUEVA Animación para los logos */
-        @keyframes scroll {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(calc(-50% - 3rem));
-        }
-        }
-
-        .logo-track {
+    /* ── Logo scroll animation ── */
+    @keyframes scroll {
+        from { transform: translateX(0); }
+        to   { transform: translateX(calc(-50% - 3rem)); }
+    }
+    .logo-track {
         display: flex;
         width: max-content;
         animation: scroll 25s linear infinite;
-        }
-
-        .logo-track:hover {
+    }
+    .logo-track:hover {
         animation-play-state: paused;
-        }
-    </style>
+    }
 
+    /* ── Mobile nav: horizontal scroll, no wrap ── */
+    @media (max-width: 639px) {
+        #smart-nav .nav-list {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            flex-wrap: nowrap;
+            gap: 0.5rem;
+            padding-bottom: 4px;
+        }
+        #smart-nav .nav-list::-webkit-scrollbar { display: none; }
+        #smart-nav .nav-list li a {
+            font-size: 0.7rem;
+            padding: 0.4rem 0.7rem;
+            white-space: nowrap;
+        }
+    }
+
+    /* ── Hero heading scale ── */
+    @media (max-width: 480px) {
+        .hero-heading { font-size: 2.1rem; }
+    }
+
+    /* ── Quote cards: uniform min-height on mobile ── */
+    @media (max-width: 767px) {
+        .quote-card { min-height: 0 !important; }
+    }
+
+    /* ── CTA section heading ── */
+    @media (max-width: 480px) {
+        .cta-heading { font-size: 2rem; }
+    }
+
+    /* ── Prevent horizontal overflow globally ── */
+    html, body { overflow-x: hidden; }
+    </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body class="bg-pattern text-gray-800 flex flex-col min-h-screen">
 
-    <nav id="smart-nav" class="sticky top-0 z-50 bg-primary transition-all duration-500 py-6">
-        <div class="max-w-4xl mx-auto px-6">
-            <ul class="flex flex-wrap gap-4 sm:gap-6 list-none m-0 p-0">
-                <li><a href="index.html" class="text-white bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Inicio</a></li>
-                <li><a href="el-libro.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">El Libro</a></li>
-                <li><a href="about.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Acerca del Autor</a></li>
-                <li><a href="testimonios.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Testimonios</a></li>
-                <li><a href="gamificacion.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-4 py-2 rounded-md transition-colors text-sm">Desafío</a></li>
+    <!-- ══════════════ NAV ══════════════ -->
+    <nav id="smart-nav" class="sticky top-0 z-50 bg-primary transition-all duration-500 py-4 sm:py-6">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <ul class="nav-list flex list-none m-0 p-0 gap-2 sm:gap-6 sm:flex-wrap">
+                <li><a href="index.html"        class="text-white bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Inicio</a></li>
+                <li><a href="el-libro.html"     class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">El Libro</a></li>
+                <li><a href="about.html"        class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Autor</a></li>
+                <li><a href="testimonios.html"  class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Testimonios</a></li>
+                <li><a href="gamificacion.html" class="text-white/60 hover:text-white hover:bg-white/10 font-medium uppercase tracking-wide px-3 py-2 rounded-md transition-colors text-xs sm:text-sm whitespace-nowrap">Desafío</a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6 pt-12">
+    <!-- ══════════════ MAIN ══════════════ -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 w-full">
         
-        <header class="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-10 items-center mb-16 text-center md:text-left">
+        <!-- ── Hero ── -->
+        <header class="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8 md:gap-10 items-center mb-12 sm:mb-16 text-center md:text-left">
             
-            <div class ="reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out delay-100">
-                <h1 class="text-4xl md:text-6xl font-serif font-black text-primary leading-tight mb-4 tracking-tight">
+            <div class="reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out delay-100">
+                <h1 class="hero-heading text-4xl md:text-6xl font-serif font-black text-primary leading-tight mb-4 tracking-tight">
                     Despierta la <span class="highlight-marker">innovación</span> en tu equipo...
                 </h1>
-                <p class="text-lg text-muted mb-8">
+                <p class="text-base sm:text-lg text-muted mb-6 sm:mb-8">
                     Descarga gratis <strong class="text-primary">'El Mindset Innovador'</strong>. Más de 100 destellos de genialidad para líderes y emprendedores que se niegan a ser del montón.
                 </p>
                 
-                <form class="flex flex-col gap-3 max-w-sm mx-auto md:mx-0 w-full" onsubmit="handleDownload(event)">
+                <form class="flex flex-col gap-3 w-full max-w-sm mx-auto md:mx-0" onsubmit="handleDownload(event)">
                     <input type="text" id="userName" placeholder="Tu nombre completo" required 
                         class="p-4 border border-gray-300 rounded-md text-base focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors">
                     
@@ -116,12 +149,12 @@
                         class="p-4 border border-gray-300 rounded-md text-base focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors">
                     
                     <button type="submit" 
-                            class="bg-secondary hover:bg-[#a38a5e] text-white border-none p-4 text-base font-extrabold rounded-md cursor-pointer uppercase tracking-wide shadow-lg shadow-secondary/30 transition-all hover:-translate-y-1">
+                            class="bg-secondary hover:bg-[#a38a5e] text-white border-none p-4 text-sm sm:text-base font-extrabold rounded-md cursor-pointer uppercase tracking-wide shadow-lg shadow-secondary/30 transition-all hover:-translate-y-1">
                         Quiero mis 100 frases gratis
                     </button>
                     
                     <div class="flex items-center justify-center md:justify-start gap-1.5 mt-1 text-xs text-muted font-medium">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
                         <span>100% Gratuito. Cero Spam garantizado.</span>
@@ -129,86 +162,84 @@
                 </form>
             </div>
 
-            <div class="hidden md:flex justify-center relative group perspective-1000 reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out delay-300">
+            <!-- Mockup — visible también en mobile pero más pequeño -->
+            <div class="flex justify-center relative group md:perspective-1000 reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out delay-300 mt-4 md:mt-0">
                 <div class="absolute inset-0 bg-secondary/30 rounded-full blur-3xl scale-125 transform -translate-y-4 z-0 transition-transform duration-700 group-hover:scale-150"></div>
-                
                 <img src="src/mockup.png" alt="Ebook El Mindset Innovador" 
-                     class="w-full max-w-[320px] h-auto drop-shadow-2xl relative z-10 transition-transform duration-500 transform group-hover:-translate-y-4 group-hover:rotate-3 group-hover:scale-105">
+                     class="w-full max-w-[200px] sm:max-w-[260px] md:max-w-[320px] h-auto drop-shadow-2xl relative z-10 transition-transform duration-500 transform group-hover:-translate-y-4 group-hover:rotate-3 group-hover:scale-105">
             </div>
-
         </header>
 
-        <section class="bg-white py-10 border-b border-gray-200 text-center w-full mt-10 overflow-hidden shadow-[inset_0_0_20px_rgba(0,0,0,0.02)] reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
-            <div class="max-w-5xl mx-auto px-6 mb-6">
-                <p class="text-[11px] uppercase tracking-[2px] text-muted font-bold font-sans">
+        <!-- ── Logo strip ── -->
+        <section class="bg-white py-8 sm:py-10 border-b border-gray-200 text-center w-full mt-6 sm:mt-10 overflow-hidden shadow-[inset_0_0_20px_rgba(0,0,0,0.02)] reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 mb-4 sm:mb-6">
+                <p class="text-[10px] sm:text-[11px] uppercase tracking-[2px] text-muted font-bold font-sans">
                     Trayectoria avalada por instituciones de alto impacto:
                 </p>
             </div>
             
             <div class="relative overflow-hidden w-full">
-            <div class="logo-track items-center gap-16 md:gap-24 px-8">
-
-                <!-- bloque original -->
-                <img src="src/logo-itson.png" class="h-12 md:h-16 w-auto">
-                <img src="src/logo-startup-weekend.png" class="h-12 md:h-16 w-auto">
-                <img src="src/logo-sahuarolabs.png" class="h-12 md:h-16 w-auto">
-                <img src="src/logo-yaquivalley.png" class="h-12 md:h-16 w-auto">
-
-                <!-- duplicado -->
-                <img src="src/logo-itson.png" class="h-12 md:h-16 w-auto">
-                <img src="src/logo-startup-weekend.png" class="h-12 md:h-16 w-auto">
-                <img src="src/logo-sahuarolabs.png" class="h-12 md:h-16 w-auto">
-                <img src="src/logo-yaquivalley.png" class="h-12 md:h-16 w-auto">
-
+                <div class="logo-track items-center gap-10 sm:gap-16 md:gap-24 px-6 sm:px-8">
+                    <img src="src/logo-itson.png"          class="h-9 sm:h-12 md:h-16 w-auto">
+                    <img src="src/logo-startup-weekend.png" class="h-9 sm:h-12 md:h-16 w-auto">
+                    <img src="src/logo-sahuarolabs.png"    class="h-9 sm:h-12 md:h-16 w-auto">
+                    <img src="src/logo-yaquivalley.png"    class="h-9 sm:h-12 md:h-16 w-auto">
+                    <!-- duplicado -->
+                    <img src="src/logo-itson.png"          class="h-9 sm:h-12 md:h-16 w-auto">
+                    <img src="src/logo-startup-weekend.png" class="h-9 sm:h-12 md:h-16 w-auto">
+                    <img src="src/logo-sahuarolabs.png"    class="h-9 sm:h-12 md:h-16 w-auto">
+                    <img src="src/logo-yaquivalley.png"    class="h-9 sm:h-12 md:h-16 w-auto">
+                </div>
             </div>
-        </div>
         </section>
 
-       
-
-        <section class="max-w-4xl mx-auto px-6 py-16 reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl font-bold text-primary mb-2">Mira un adelanto de lo que encontrarás:</h2>
-                <p class="text-muted">Genera 3 frases aleatorias del libro para encender tu creatividad.</p>
+        <!-- ── Quote generator ── -->
+        <section class="max-w-4xl mx-auto px-0 sm:px-6 py-12 sm:py-16 reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+            <div class="text-center mb-8 sm:mb-10 px-4 sm:px-0">
+                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-2">Mira un adelanto de lo que encontrarás:</h2>
+                <p class="text-muted text-sm sm:text-base">Genera 3 frases aleatorias del libro para encender tu creatividad.</p>
             </div>
 
-            <div id="capture-zone" class="bg-bgmain p-2 sm:p-4 rounded-xl ">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="quote-display">
-                    </div>
+            <div id="capture-zone" class="bg-bgmain p-2 sm:p-4 rounded-xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" id="quote-display">
+                    <!-- Populated by app.js -->
+                </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-10 px-4 sm:px-0">
                 
-                <button onclick="generateQuotes()" class="flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 border border-gray-200 text-primary font-semibold text-sm uppercase tracking-wide rounded hover:bg-gray-200 transition-colors">
+                <button onclick="generateQuotes()" 
+                        class="flex items-center justify-center gap-2 px-5 py-3 bg-gray-100 border border-gray-200 text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide rounded hover:bg-gray-200 transition-colors w-full sm:w-auto">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                     </svg>
                     Otras Frases
                 </button>
 
-                <button onclick="exportImage()" class="flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary text-primary font-semibold text-sm uppercase tracking-wide rounded hover:bg-primary hover:text-white transition-colors">
+                <button onclick="exportImage()" 
+                        class="flex items-center justify-center gap-2 px-5 py-3 border-2 border-primary text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide rounded hover:bg-primary hover:text-white transition-colors w-full sm:w-auto">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
                     Exportar PNG
                 </button>
-                
             </div>
         </section>
     </main>
 
     <script src="app.js"></script>
 
-    <section class="relative py-24 overflow-hidden reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+    <!-- ══════════════ CTA SECTION ══════════════ -->
+    <section class="relative py-16 sm:py-24 overflow-hidden reveal-item opacity-0 translate-y-12 transition-all duration-1000 ease-out">
         <div class="absolute inset-0 bg-primary z-0"></div>
         <div class="absolute inset-0 opacity-10 bg-pattern z-10"></div>
-        <div class="absolute top-0 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
+        <div class="absolute top-0 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-secondary/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-secondary/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
 
-        <div class="max-w-4xl mx-auto px-6 relative z-20 text-center">
-            <span class="inline-block text-secondary font-bold text-sm uppercase tracking-[4px] mb-6">El siguiente paso</span>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-20 text-center">
+            <span class="inline-block text-secondary font-bold text-xs sm:text-sm uppercase tracking-[3px] sm:tracking-[4px] mb-4 sm:mb-6">El siguiente paso</span>
             
-            <h2 class="text-4xl md:text-6xl font-serif font-black text-white mb-8 leading-tight">
+            <h2 class="cta-heading text-3xl sm:text-4xl md:text-6xl font-serif font-black text-white mb-6 sm:mb-8 leading-tight">
                 ¿Listo para llevar tu <br> 
                 <span class="relative inline-block">
                     <span class="relative z-10">mentalidad</span>
@@ -217,156 +248,130 @@
                 al siguiente nivel?
             </h2>
             
-            <p class="text-white/70 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-white/70 text-base sm:text-lg md:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
                 Únete a los líderes y emprendedores que ya están aplicando el <strong class="text-white">Mindset Innovador</strong> para transformar sus ideas en realidades.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="index.html" class="group relative px-10 py-5 bg-secondary text-white font-bold rounded-xl uppercase tracking-widest text-sm shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+                <a href="index.html" 
+                   class="group relative px-8 sm:px-10 py-4 sm:py-5 bg-secondary text-white font-bold rounded-xl uppercase tracking-widest text-xs sm:text-sm shadow-2xl hover:-translate-y-2 transition-all duration-300 w-full sm:w-auto text-center">
                     <span class="relative z-10">Descargar Ebook Gratis</span>
                     <div class="absolute inset-0 bg-white/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
                 </a>
                 
-                <a href="gamificacion.html" class="px-10 py-5 border-2 border-white/20 text-white font-bold rounded-xl uppercase tracking-widest text-sm hover:bg-white/5 transition-all">
+                <a href="gamificacion.html" 
+                   class="px-8 sm:px-10 py-4 sm:py-5 border-2 border-white/20 text-white font-bold rounded-xl uppercase tracking-widest text-xs sm:text-sm hover:bg-white/5 transition-all w-full sm:w-auto text-center">
                     Probar el Desafío
                 </a>
             </div>
             
-            <p class="mt-12 text-white/40 text-xs font-medium flex items-center justify-center gap-2">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <p class="mt-8 sm:mt-12 text-white/40 text-xs font-medium flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
                 Más de 30 años de experiencia condensados en una guía práctica.
             </p>
         </div>
     </section>
-    <footer class="bg-primary text-white/70 py-12 border-t-4 border-secondary mt-0">
-            <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-3">El Mindset Innovador</h3>
-                    <p class="text-sm leading-relaxed">
-                        Desmitificando la innovación para líderes, docentes y emprendedores que se atreven a pensar diferente.
-                    </p>
-                </div>
 
-                <div>
-                    <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Navegación</h4>
-                    <ul class="flex flex-col gap-2 text-sm">
-                        <li><a href="index.html" class="hover:text-secondary transition-colors">Inicio (Descargar Libro)</a></li>
-                        <li><a href="el-libro.html" class="hover:text-secondary transition-colors">El Libro</a></li>
-                        <li><a href="about.html" class="hover:text-secondary transition-colors">Acerca del Autor</a></li>
-                        <li><a href="testimonios.html" class="hover:text-secondary transition-colors">Testimonios</a></li>
-                        <li><a href="gamificacion.html" class="hover:text-secondary transition-colors font-bold text-secondary">Desafío ADN Innovador</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Conecta con Jesús</h4>
-                    <ul class="flex flex-col gap-2 text-sm mb-6">
-                        <li><a href="https://jesusgaxiola.com" target="_blank" class="hover:text-secondary transition-colors">jesusgaxiola.com</a></li>
-                        <li><a href="https://x.com/jesusgaxiola" target="_blank" class="hover:text-secondary transition-colors">X (Twitter) @jesusgaxiola</a></li>
-                        <li><a href="https://linkedin.com/in/jesusgaxiola/" target="_blank" class="hover:text-secondary transition-colors">LinkedIn /jesusgaxiola</a></li>
-                    </ul>
-
-                    <a href="#" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-lg font-bold text-sm shadow-md hover:bg-[#ffea4d] hover:-translate-y-1 transition-all w-fit">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4v-2z"/>
-                        </svg>
-                        Invítame un café
-                    </a>
-                </div>
-
-                
-                
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="bg-primary text-white/70 py-10 sm:py-12 border-t-4 border-secondary mt-0">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
+            
+            <div>
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-3">El Mindset Innovador</h3>
+                <p class="text-sm leading-relaxed">
+                    Desmitificando la innovación para líderes, docentes y emprendedores que se atreven a pensar diferente.
+                </p>
             </div>
 
-            <div class="max-w-4xl mx-auto px-6 mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/50">
-                <p>&copy; 2026 Jesús A. Gaxiola. Todos los derechos reservados. Impulsando el ecosistema YaquiValley.</p>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Navegación</h4>
+                <ul class="flex flex-col gap-2 text-sm">
+                    <li><a href="index.html"        class="hover:text-secondary transition-colors">Inicio (Descargar Libro)</a></li>
+                    <li><a href="el-libro.html"     class="hover:text-secondary transition-colors">El Libro</a></li>
+                    <li><a href="about.html"        class="hover:text-secondary transition-colors">Acerca del Autor</a></li>
+                    <li><a href="testimonios.html"  class="hover:text-secondary transition-colors">Testimonios</a></li>
+                    <li><a href="gamificacion.html" class="hover:text-secondary transition-colors font-bold text-secondary">Desafío ADN Innovador</a></li>
+                </ul>
             </div>
+
+            <div class="sm:col-span-2 md:col-span-1">
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Conecta con Jesús</h4>
+                <ul class="flex flex-col gap-2 text-sm mb-5">
+                    <li><a href="https://jesusgaxiola.com"           target="_blank" class="hover:text-secondary transition-colors">jesusgaxiola.com</a></li>
+                    <li><a href="https://x.com/jesusgaxiola"         target="_blank" class="hover:text-secondary transition-colors">X (Twitter) @jesusgaxiola</a></li>
+                    <li><a href="https://linkedin.com/in/jesusgaxiola/" target="_blank" class="hover:text-secondary transition-colors">LinkedIn /jesusgaxiola</a></li>
+                </ul>
+
+                <a href="#" target="_blank" 
+                   class="inline-flex items-center justify-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-lg font-bold text-sm shadow-md hover:bg-[#ffea4d] hover:-translate-y-1 transition-all w-fit">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4v-2z"/>
+                    </svg>
+                    Invítame un café
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/50">
+            <p>&copy; 2026 Jesús A. Gaxiola. Todos los derechos reservados. Impulsando el ecosistema YaquiValley.</p>
+        </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.15, 
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        // Remueve las clases ocultas y añade las de estado final
-                        entry.target.classList.remove('opacity-0', 'translate-y-12');
-                        entry.target.classList.add('opacity-100', 'translate-y-0');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.reveal-item').forEach((el) => {
-                observer.observe(el);
-            });
-        });
-    </script>
-
-    <script>
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('smart-nav');
-            if (window.scrollY > 50) {
-                // Cuando baja: se hace delgado, semitransparente y con blur
-                nav.classList.remove('py-6', 'bg-primary');
-                nav.classList.add('py-3', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
-            } else {
-                // Cuando está arriba: regresa a su tamaño y color original
-                nav.classList.add('py-6', 'bg-primary');
-                nav.classList.remove('py-3', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.15, // Se activa cuando el 15% del elemento es visible
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        // Remueve las clases ocultas y añade las de estado final
-                        entry.target.classList.remove('opacity-0', 'translate-y-12');
-                        entry.target.classList.add('opacity-100', 'translate-y-0');
-                        // Deja de observar una vez que ya apareció
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Busca todos los elementos que tengan la clase 'reveal-item'
-            document.querySelectorAll('.reveal-item').forEach((el) => {
-                observer.observe(el);
-            });
-        });
-    </script>
-
-    <div id="success-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
-        <div id="success-modal-content" class="bg-white p-8 md:p-10 rounded-3xl shadow-2xl max-w-md w-full mx-4 transform scale-95 transition-transform duration-300 flex flex-col items-center text-center border-t-4 border-secondary">
+    <!-- ══════════════ SUCCESS MODAL ══════════════ -->
+    <div id="success-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 p-4">
+        <div id="success-modal-content" class="bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl max-w-md w-full mx-auto transform scale-95 transition-transform duration-300 flex flex-col items-center text-center border-t-4 border-secondary">
             
-            <div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mb-6 shadow-inner">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mb-5 sm:mb-6 shadow-inner">
+                <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                 </svg>
             </div>
             
-            <h3 class="text-3xl font-serif font-black text-primary mb-3">¡Todo listo!</h3>
-            <p id="modal-message" class="text-gray-600 mb-8 leading-relaxed text-sm md:text-base">
+            <h3 class="text-2xl sm:text-3xl font-serif font-black text-primary mb-3">¡Todo listo!</h3>
+            <p id="modal-message" class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm md:text-base">
                 Tus datos se han guardado con éxito.
             </p>
             
-            <button id="close-modal-btn" class="w-full bg-primary hover:bg-[#1a252f] text-white font-bold py-4 rounded-xl uppercase tracking-[0.2em] text-sm transition-all shadow-lg hover:-translate-y-1">
+            <button id="close-modal-btn" 
+                    class="w-full bg-primary hover:bg-[#1a252f] text-white font-bold py-4 rounded-xl uppercase tracking-[0.2em] text-sm transition-all shadow-lg hover:-translate-y-1">
                 Entendido
             </button>
         </div>
     </div>
-    
-    </body>
+
+    <!-- ══════════════ SCRIPTS ══════════════ -->
+    <script>
+        /* Scroll-reveal */
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-12');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+            document.querySelectorAll('.reveal-item').forEach((el) => observer.observe(el));
+        });
+    </script>
+
+    <script>
+        /* Smart nav shrink on scroll */
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('smart-nav');
+            if (window.scrollY > 50) {
+                nav.classList.remove('py-4', 'sm:py-6', 'bg-primary');
+                nav.classList.add('py-2', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                nav.classList.add('py-4', 'bg-primary');
+                nav.classList.remove('py-2', 'bg-primary/85', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+    </script>
+
+</body>
 </html>
